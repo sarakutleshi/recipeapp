@@ -1,0 +1,9 @@
+package dev.sarakutleshi.recipeapp_final.repositories;
+
+import dev.sarakutleshi.recipeapp_final.models.Recipe;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface RecipeRepository extends JpaRepository<Recipe, Long> {
+}

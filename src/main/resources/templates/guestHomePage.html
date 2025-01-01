@@ -1,0 +1,102 @@
+<th:block th:insert="~{/shared/_header.html}"></th:block>
+
+<section class="homepage-content">
+    <div class="left-side" style="color:#F6EED0">
+        <h3>Your Daily Dish <br> A food Journey</h3>
+        <p style="margin-top: 100px; margin-bottom: 50px">
+            Looking for a taste of what’s brewing at our café? Now you can explore our full menu of mouthwatering
+            recipes, <br>
+            all available on our app! From our signature coffees to freshly baked pastries and seasonal specials,
+            everything is just a tap away. <br><br>
+
+            Whether you're craving a sweet treat or a savory snack, our app gives you an easy way to view detailed
+            recipes, ingredients, and even make your own at home. <br>
+            Enjoy a behind-the-scenes look at how we craft every dish with love, care, and the finest ingredients.<br>
+            <br>
+            Log In to the app today and dive into a world of flavor at your fingertips. <br>
+            Your next favorite recipe is just waiting to be discovered!
+        </p>
+        <a class="btn2" th:href="@{/log-in}">Log In</a>
+    </div>
+    <img class="image" src="https://i.pinimg.com/736x/3d/c2/2d/3dc22dff3c0ca1616c075db2e13a31e5.jpg">
+</section>
+
+<section class="homepage-content">
+    <img class="image" height="350px"
+         src="https://i.pinimg.com/736x/26/a7/03/26a703e3d561b6377c452c3f7efa6e00.jpg"
+         style="margin-left: 100px; margin-top: 30px" width="300px">
+    <div class="left-side" style="color:#F6EED0">
+        <h3>Share Your Recipes</h3>
+        <p style="margin-top: 50px; margin-bottom: 50px">
+            Craving something delicious? <br>
+            Check out our café's food recipes on the app!<br>
+            From tasty pastries to savory dishes, you'll find everything you need to recreate your favorites at home.<br>
+            Sign In to the app and start cooking today!
+        </p>
+
+        <a class="btn1" th:href="@{/sign-up}">Sign Up</a>
+    </div>
+</section>
+
+
+<div th:replace="~{shared/_feature :: feature('Explore Recipes')}"></div>
+
+
+<section class="featured-recipes" id="home">
+    <div class="recipe-card" th:insert="~{shared/_post :: showPost(
+  imageUrl='https://i.pinimg.com/736x/c2/09/76/c20976119a9c82a2604d63f1539e4f5b.jpg',
+  username='Carrot Cake',
+  content='Easy-to-make dessert for any occasion.',
+  src='')}"></div>
+
+    <div class="recipe-card" th:insert="~{shared/_post :: showPost(
+  imageUrl='https://i.pinimg.com/474x/3b/bd/d6/3bbdd6014ae5d7d2d7afb6352655ba2e.jpg',
+  username='Dinner Idea',
+  content='Healthy and tasty meal for the whole family.',
+  src='' )}"></div>
+
+    <div class="recipe-card" th:insert="~{shared/_post :: showPost(
+  imageUrl='https://i.pinimg.com/736x/43/05/00/4305008bd4713ae637191c20d8a06ed7.jpg',
+  username='Dessert',
+  content='Easy-to-make dessert for any occasion.',
+  src='')}"></div>
+
+    <div class="recipe-card" th:insert="~{shared/_post :: showPost(
+  imageUrl='https://i.pinimg.com/736x/fa/56/9d/fa569d36d38706b1294be12aa673ce7b.jpg',
+  username='Lunch Recipe',
+  content='Quick and delicious recipe for busy days.',
+  src='')}"></div>
+
+    <div class="recipe-card" th:insert="~{shared/_post :: showPost(
+  imageUrl='https://i.pinimg.com/236x/df/88/75/df8875efdeee6b19f20e6ef3e76796f4.jpg',
+  username='Dinner Idea',
+  content='Healthy and tasty meal for the whole family.',
+  src='')}"></div>
+
+    <div class="recipe-card" th:insert="~{shared/_post :: showPost(
+  imageUrl='https://i.pinimg.com/236x/17/9a/01/179a01b9f173d8f6fc27a59921793d65.jpg',
+  username='Lunch Recipe',
+  content='Quick and delicious recipe for busy days.',
+  src='')}">
+    </div>
+</section>
+
+<div th:replace="~{shared/_feature :: feature('Blog')}"></div>
+
+<section class="featured-recipes" style="margin-left: 300px">
+    <div class="recipe-card" th:insert="~{shared/_post :: showPost(
+  imageUrl='https://i.pinimg.com/236x/6b/67/96/6b6796f35b567183d38481eb7699489e.jpg',
+  username='The impact of Sugar Consuming on Your Health',
+  content='Consuming too much sugar, particularly added sugars,can have a significant negative impact on your health...',
+  src='/recipes/1')}">
+    </div>
+
+    <div class="recipe-card" th:insert="~{shared/_post :: showPost(
+  imageUrl='https://i.pinimg.com/236x/44/92/69/4492697e29136062eef374416cf7e33e.jpg',
+  username='Unlock the benefits of Intermittent Fasting',
+  content='Intermittent fasting has gained significant attention for its potential health benefits.It involves cycling between periods of eating and fasting...',
+  src='/recipes/1')}">
+    </div>
+</section>
+
+<th:block th:insert="~{/shared/_footer.html}"></th:block>

@@ -1,0 +1,111 @@
+<th:block th:insert="~{/shared/_header.html}"></th:block>
+<section>
+    <div style="display: flex; width: 100%; margin-left: 200px">
+        <!-- Left Section -->
+        <div style="width: 100%; padding: 20px; box-sizing: border-box;">
+            <div class="container">
+                <h2>Create New Recipe</h2>
+                <form>
+                    <!-- Recipe Title -->
+                    <div class="form-group">
+                        <label for="recipe-title">Recipe Title:</label>
+                        <input class="form-control" id="recipe-title" placeholder="Enter recipe title" type="text">
+                    </div>
+
+                    <!-- Description -->
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <input class="form-control" id="description" placeholder="Brief description (max 100 characters)"
+                               type="text">
+                    </div>
+
+                    <!-- Recipe Image -->
+                    <div class="form-group">
+                        <label for="recipe-image">Upload Recipe Image:</label>
+                        <div class="file-upload">
+                            <span>Drag and drop or click to upload</span>
+                            <input accept="image/*" id="recipe-image" onchange="showPreview(event);" type="file">
+                        </div>
+                        <div class="preview" id="image-preview"></div>
+                    </div>
+
+                    <!-- Ingredients -->
+                    <div class="form-group dynamic-section">
+                        <label>Ingredients:</label>
+                        <div id="ingredients-list">
+                            <input class="form-control" placeholder="Add an ingredient" type="text">
+                        </div>
+                        <button onclick="addIngredient()" type="button">+ Add Ingredient</button>
+                    </div>
+
+                    <!-- Steps -->
+                    <div class="form-group dynamic-section">
+                        <label>Steps:</label>
+                        <div id="steps-list">
+                            <input class="form-control" placeholder="Describe step 1" type="text">
+                        </div>
+                        <button onclick="addStep()" type="button">+ Add Step</button>
+                    </div>
+
+                    <!-- Servings -->
+                    <div class="form-group">
+                        <label>Servings:</label>
+                        <input class="form-control" placeholder="Number of servings" type="number">
+                    </div>
+
+                    <!-- Cooking Time -->
+                    <div class="form-group time-group">
+                        <label>Cooking Time:</label>
+                        <input class="form-control" placeholder="Hours" type="number">
+                        <input class="form-control" placeholder="Minutes" type="number">
+                    </div>
+
+                    <!-- Nutrition Information -->
+                    <div class="form-group">
+                        <label>Estimated Nutrition (Optional):</label>
+                        <div class="nutrition-group">
+                            <input class="form-control" placeholder="Calories (kcal)" type="number">
+                            <input class="form-control" placeholder="Protein (g)" type="number">
+                            <input class="form-control" placeholder="Carbs (g)" type="number">
+                            <input class="form-control" placeholder="Fats (g)" type="number">
+                        </div>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="buttons">
+                        <button type="button">Preview Recipe</button>
+                        <button type="submit">Save Recipe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Right Section -->
+
+        <div style="width: 100%; padding: 20px">
+            <h4 style="margin-top: 10px ; margin-bottom: 5px">Get Inspo:</h4>
+            <section class="featured-recipes" id="home">
+                <div>
+                    <div class="recipe-card" style="height: 270px; width: 250px" th:insert="~{shared/_post :: showPost(
+                imageUrl='https://i.pinimg.com/474x/3b/bd/d6/3bbdd6014ae5d7d2d7afb6352655ba2e.jpg',
+                username='Dinner Idea',
+                content='view recipe descriptions',
+                src='' )}"></div>
+
+                    <div class="recipe-card" style="height: 270px; width: 250px " th:insert="~{shared/_post :: showPost(
+                imageUrl='https://i.pinimg.com/736x/43/05/00/4305008bd4713ae637191c20d8a06ed7.jpg',
+                username='Dessert',
+                content='view recipe descriptions',
+                src='')}"></div>
+
+                    <div class="recipe-card" style="height: 270px; width: 250px " th:insert="~{shared/_post :: showPost(
+                imageUrl='https://i.pinimg.com/236x/17/9a/01/179a01b9f173d8f6fc27a59921793d65.jpg',
+                username='Lunch Recipe',
+                content='view recipe descriptions',
+                src='')}"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+<th:block th:insert="~{/shared/_footer.html}"></th:block>

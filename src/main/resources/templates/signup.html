@@ -1,0 +1,38 @@
+<th:block th:insert="~{/shared/_header.html}"></th:block>
+<!-- Sign Up Form -->
+<div class="signup-form">
+    <div>
+        <img  style="height: 680px; width: 500px; border-radius: 20px 0 0 20px "
+              src="https://i.pinimg.com/736x/6e/89/0b/6e890b435e5dc61ae5b26dc9a1f4069b.jpg">
+    </div>
+    <div class="form-box">
+        <h2>Sign Up</h2>
+        <div class="textbox">
+            <input type="text" placeholder="Name" name="name" required>
+        </div>
+        <div class="textbox">
+            <input type="text" placeholder="Surname" name="surname" required>
+        </div>
+        <div class="textbox">
+            <input type="date" placeholder="Birthdate" name="birthdate" required>
+        </div>
+        <div class="textbox">
+            <input type="email" placeholder="Email" name="email" required>
+        </div>
+        <div class="textbox">
+            <input type="text" placeholder="Username" name="username" required>
+        </div>
+        <div class="textbox">
+            <input type="password" placeholder="Password" name="password" required>
+        </div>
+        <div class="textbox">
+            <input type="password" placeholder="Confirm Password" name="confirm-password" required>
+        </div>
+        <div class="textbox">
+            <input type="password" placeholder="Confirm Password" name="confirm-password" required>
+        </div>
+        <input type="submit" value="Sign Up" class="btn">
+        <p>Already have an account? <a th:href="@{/log-in}">Login</a></p>
+    </div>
+</div>
+<th:block th:insert="~{/shared/_footer.html}"></th:block>

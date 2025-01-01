@@ -1,0 +1,100 @@
+<th:block th:insert="~{/shared/_header.html}"></th:block>
+<div class="hero">
+    <h1 class="hero-title">Recipe Heaven</h1>
+    <p class="hero-subtitle">Your go-to collection of recipes for every taste and occasion!</p>
+</div>
+
+<section class="search-filters">
+    <h2>Find Your Perfect Recipe</h2>
+    <form>
+        <input type="text" class="form-control" style="width: 400px" placeholder="Search by recipe name">
+        <select name="categories" class="dropdown">
+            <option value="">All Categories</option>
+            <option value="appetizers">Appetizers</option>
+            <option value="main-course">Main Course</option>
+            <option value="desserts">Desserts</option>
+        </select>
+        <button type="submit" class="button">Search</button>
+    </form>
+</section>
+
+<div th:replace="~{shared/_feature :: feature('Popular Recipes')}"></div>
+<section id="home" class="featured-recipes">
+    <div class="recipe-card" th:insert="~{shared/_post :: showPost(
+  imageUrl='https://i.pinimg.com/474x/3b/bd/d6/3bbdd6014ae5d7d2d7afb6352655ba2e.jpg',
+  username='Dinner Idea',
+  content='Healthy and tasty meal for the whole family.',
+  src='' )}"></div>
+
+    <div class="recipe-card" th:insert="~{shared/_post :: showPost(
+  imageUrl='https://i.pinimg.com/736x/43/05/00/4305008bd4713ae637191c20d8a06ed7.jpg',
+  username='Dessert',
+  content='Easy-to-make dessert for any occasion.',
+  src='')}"></div>
+
+
+    <div class="recipe-card" th:insert="~{shared/_post :: showPost(
+  imageUrl='https://i.pinimg.com/236x/17/9a/01/179a01b9f173d8f6fc27a59921793d65.jpg',
+  username='Lunch Recipe',
+  content='Quick and delicious recipe for busy days.',
+  src='')}">
+    </div>
+</section>
+<button class="btn" style="margin-left: 700px">View More</button>
+
+<section class="popular-categories">
+    <h2 style="margin-left: 30px; margin-bottom: 50px ; margin-top: 50px">Explore Popular Categories</h2>
+    <div class="categories-grid">
+        <div class="category-box">Appetizers</div>
+        <div class="category-box">Main Courses</div>
+        <div class="category-box">Desserts</div>
+        <div class="category-box">Vegetarian</div>
+        <div class="category-box">Vegan</div>
+        <div class="category-box">Gluten-Free</div>
+    </div>
+</section>
+
+<div th:replace="~{shared/_feature :: feature('View All')}"></div>
+<section class="featured-recipes">
+    <div class="recipe-card" th:insert="~{shared/_post :: showPost(
+  imageUrl='https://i.pinimg.com/474x/3b/bd/d6/3bbdd6014ae5d7d2d7afb6352655ba2e.jpg',
+  username='Dinner Idea',
+  content='Healthy and tasty meal for the whole family.',
+  src='' )}"></div>
+
+    <div class="recipe-card" th:insert="~{shared/_post :: showPost(
+  imageUrl='https://i.pinimg.com/736x/43/05/00/4305008bd4713ae637191c20d8a06ed7.jpg',
+  username='Dessert',
+  content='Easy-to-make dessert for any occasion.',
+  src='')}"></div>
+
+
+    <div class="recipe-card" th:insert="~{shared/_post :: showPost(
+  imageUrl='https://i.pinimg.com/236x/17/9a/01/179a01b9f173d8f6fc27a59921793d65.jpg',
+  username='Lunch Recipe',
+  content='Quick and delicious recipe for busy days.',
+  src='')}">
+    </div>
+    <div class="recipe-card" th:insert="~{shared/_post :: showPost(
+  imageUrl='https://i.pinimg.com/474x/3b/bd/d6/3bbdd6014ae5d7d2d7afb6352655ba2e.jpg',
+  username='Dinner Idea',
+  content='Healthy and tasty meal for the whole family.',
+  src='' )}"></div>
+
+    <div class="recipe-card" th:insert="~{shared/_post :: showPost(
+  imageUrl='https://i.pinimg.com/736x/43/05/00/4305008bd4713ae637191c20d8a06ed7.jpg',
+  username='Dessert',
+  content='Easy-to-make dessert for any occasion.',
+  src='')}"></div>
+
+
+    <div class="recipe-card" th:insert="~{shared/_post :: showPost(
+  imageUrl='https://i.pinimg.com/236x/17/9a/01/179a01b9f173d8f6fc27a59921793d65.jpg',
+  username='Lunch Recipe',
+  content='Quick and delicious recipe for busy days.',
+  src='')}">
+    </div>
+</section>
+<button class="btn" style="margin-left: 700px; margin-bottom: 50px">View More</button>
+
+<th:block th:insert="~{/shared/_footer.html}"></th:block>

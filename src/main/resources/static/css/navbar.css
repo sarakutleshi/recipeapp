@@ -1,0 +1,45 @@
+* {
+    font-family: Bahnschrift, sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    background-color: white;
+}
+
+body{
+    background-color: white;
+}
+
+.container-fluid {
+    position: sticky;
+    margin-left: 250px;
+    margin-right: 200px;
+    font-family: Inter, sans-serif;
+    font-weight: inherit;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.left-side h3:hover {
+    color: #b66b51;
+}
+
+.nav-link:hover {
+    color: #f9c0ab;
+}
+
+.nav-link {
+    color: black;
+
+}
+
+.logo{
+    margin-right: 100px;
+    color: #b66b51;
+    font-size: xxx-large;
+    font-family: Bahnschrift, serif;
+}
+
+.logo:hover{
+    color: #a85539;
+}

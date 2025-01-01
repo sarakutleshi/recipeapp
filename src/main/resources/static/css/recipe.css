@@ -1,0 +1,91 @@
+.hero {
+    background-color: #F6EED0;
+    padding: 20px 0;
+    text-align: center;
+    color: #9f2b3f;
+    height: 200px;
+}
+
+.hero-title {
+    margin-top: 30px;
+    font-size: 36px;
+    margin-bottom: 10px;
+    background-color: #F6EED0;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    margin-bottom: 20px;
+    background-color: #F6EED0;
+}
+
+.search-filters {
+    padding: 2em 0;
+    text-align: center;
+}
+
+.search-filters form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+}
+
+.search-bar, .dropdown, .button {
+    padding: 0.8em;
+    font-size: 1em;
+}
+
+.search-bar, .dropdown {
+    flex: 1;
+    max-width: 300px;
+}
+
+.button {
+    background: #db4966;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown{
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.5em;
+    font-size: 1em;
+    color: #7f0e0e;
+    cursor: pointer;
+    background-color: #f8f8f8;
+    width: 100%;
+    max-width: 300px;
+    text-align: left;
+}
+
+/* Popular Categories */
+.popular-categories {
+    padding: 10px 0;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 5px; /* Completely remove the gap between boxes */
+    text-align: center;
+}
+
+.category-box {
+    background-color: #eec9bb;
+    padding: 10px; /* Inner padding for content */
+    border-radius: 20px; /* Remove rounding for a seamless look */
+    box-shadow: none; /* Remove shadow for a connected appearance */
+    font-size: 18px;
+    border: 1px solid rgb(219, 73, 102); /* Optional: Add a border to highlight the separation */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: #7f0e0e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
