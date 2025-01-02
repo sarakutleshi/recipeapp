@@ -1,8 +1,0 @@
-package dev.sarakutleshi.recipeapp_final.services;
-
-import dev.sarakutleshi.recipeapp_final.dtos.RecipeDto;
-import org.springframework.stereotype.Service;
-
-@Service
-public interface RecipeService extends BaseService<RecipeDto, Long> {
-}
