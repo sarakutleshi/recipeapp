@@ -14,11 +14,6 @@ public class RecipeController {
         return "guestHomePage";
     }
 
-    @GetMapping("/user-home")
-    public String userHome(Model model) {
-        model.addAttribute("pageTitle", "User Home Page");
-        return "userHomePage";
-    }
 
     @GetMapping("/about")
     public String about(Model model) {

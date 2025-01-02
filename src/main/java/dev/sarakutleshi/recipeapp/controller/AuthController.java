@@ -45,31 +45,31 @@ public class AuthController {
         if (bindingResult.hasErrors()) {
             return "auth/login";
         }
+
         try {
             var userDto = userService.login(loginRequestDto.getEmail(), loginRequestDto.getPassword());
 
-            HttpSession session = request.getSession();
+            HttpSession session = request.getSession(false); // avoiding creating a new session if one exists
+            if (session == null) {
+                session = request.getSession(true); // create new session if one doesn't exist
+            }
             session.setAttribute("user", userDto);
 
-            Cookie cookie = new Cookie("id", "" + userDto.getId());
-            if (loginRequestDto.isRememberMe()) {
-                cookie.setMaxAge(60 * 60 * 24 * 30); // 30 days
-            } else {
-                cookie.setMaxAge(60 * 60); // 1 hour
-            }
 
+            Cookie cookie = new Cookie("id", "" + userDto.getId());
+            cookie.setMaxAge(loginRequestDto.isRememberMe() ? 60 * 60 * 24 * 30 : 60 * 60); // 30 days or 1 hour
             response.addCookie(cookie);
 
-            if (returnUrl == null || returnUrl.isBlank())
-                return "redirect:/userHomePage";
+            if (returnUrl == null || returnUrl.isBlank()) {
+                return "redirect:/user-home";
+            }
             return "redirect:" + returnUrl;
+
         } catch (UserNotFoundException e) {
-            bindingResult.rejectValue("email", "error.loginRequestDto",
-                    "User with this email does not exist");
+            bindingResult.rejectValue("email", "error.loginRequestDto", "User with this email does not exist");
             return "auth/login";
         } catch (WrongPasswordException e) {
-            bindingResult.rejectValue("password", "error.loginRequestDto",
-                    e.getMessage());
+            bindingResult.rejectValue("password", "error.loginRequestDto", e.getMessage());
             return "auth/login";
         }
     }
@@ -79,35 +79,32 @@ public class AuthController {
     public String register(Model model) {
         model.addAttribute("registerUserRequestDto", new RegisterUserRequestDto());
         model.addAttribute("maxDate", LocalDate.now().minusYears(18));
-        return "signup";
+        return "auth/signup";
     }
 
-    @PostMapping("/register")
+    @PostMapping("/sign-up")
     public String register(@Valid @ModelAttribute RegisterUserRequestDto registerUserRequestDto,
                            BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "auth/register";
+            return "auth/signup";
         }
 
         if (!registerUserRequestDto.getPassword().equals(registerUserRequestDto.getConfirmPassword())) {
-            bindingResult.rejectValue("password", "error.registerUserRequestDto", "Passwordet nuk perputhen");
-            bindingResult.rejectValue("confirmPassword", "error.registerUserRequestDto", "Passwordet nuk perputhen");
-            return "auth/register";
+            bindingResult.rejectValue("password", "error.registerUserRequestDto", "Passwords do not match");
+            bindingResult.rejectValue("confirmPassword", "error.registerUserRequestDto", "Passwords do not match");
+            return "auth/signup";
         }
 
         try {
             userService.register(registerUserRequestDto);
         } catch (UsernameExistException e) {
-            bindingResult.rejectValue("username", "error.registerUserRequestDto",
-                    "Ky username ekziston");
-            return "auth/register";
+            bindingResult.rejectValue("username", "error.registerUserRequestDto", "Username already exists");
+            return "auth/signup";
         } catch (EmailExistException e) {
-            bindingResult.rejectValue("email", "error.registerUserRequestDto",
-                    "Ky email ekziston");
-            return "auth/register";
+            bindingResult.rejectValue("email", "error.registerUserRequestDto", "Email already exists");
+            return "auth/signup";
         }
 
-
-        return "redirect:/login";
+        return "redirect:/log-in";
     }
 }

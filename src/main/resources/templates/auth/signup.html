@@ -1,38 +1,77 @@
 <th:block th:insert="~{/shared/_header.html}"></th:block>
-<!-- Sign Up Form -->
 <div class="signup-form">
     <div>
-        <img  style="height: 680px; width: 500px; border-radius: 20px 0 0 20px "
-              src="https://i.pinimg.com/736x/6e/89/0b/6e890b435e5dc61ae5b26dc9a1f4069b.jpg">
+        <img src="https://i.pinimg.com/736x/6e/89/0b/6e890b435e5dc61ae5b26dc9a1f4069b.jpg"
+             style="height: 740px; width: 500px; border-radius: 20px 0 0 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); ">
     </div>
     <div class="form-box">
-        <h2>Sign Up</h2>
-        <div class="textbox">
-            <input type="text" placeholder="Name" name="name" required>
+        <div class="auth-form-container text-start mx-auto">
+            <form class="auth-form auth-signup-form" method="post" th:object="${registerUserRequestDto}">
+                <div class="email mb-3">
+                    <label class="sr-only" for="name">Name</label>
+                    <input class="form-control signup-name" placeholder="Name" required="required" th:field="*{name}"
+                           type="text">
+                    <div th:errors="*{name}" th:if="${#fields.hasErrors('name')}"></div>
+                </div>
+                <div class="email mb-3">
+                    <label class="sr-only" for="name">Surname</label>
+                    <input class="form-control signup-name" placeholder="Surname" required="required" th:field="*{surname}"
+                           type="text">
+                    <div th:errors="*{surname}" th:if="${#fields.hasErrors('surname')}"></div>
+                </div>
+
+                <div class="email mb-3">
+                    <label class="" for="name">Birthdate</label>
+                    <input class="form-control signup-name" min="1900-01-01" placeholder="Birthday" required="required"
+                           th:field="*{birthdate}"
+                           th:max="${maxDate}" type="date">
+                    <div th:errors="*{birthdate}" th:if="${#fields.hasErrors('birthdate')}"></div>
+                </div>
+                <div class="email mb-3">
+                    <label class="sr-only" for="email">Your Email</label>
+                    <input class="form-control signup-email" placeholder="Email" required="required" th:field="*{email}"
+                           type="email">
+                    <div th:errors="*{email}" th:if="${#fields.hasErrors('email')}"></div>
+                </div>
+                <div class="email mb-3">
+                    <label class="sr-only" for="username">Username</label>
+                    <input class="form-control signup-email" placeholder="Username" required="required" th:field="*{username}"
+                           type="text">
+                    <div th:errors="*{username}" th:if="${#fields.hasErrors('username')}"></div>
+                </div>
+                <div class="password mb-3">
+                    <label class="sr-only" for="signup-password">Password</label>
+                    <input class="form-control signup-password" placeholder="Create a password" required="required"
+                           th:field="*{password}" type="password">
+                    <div th:errors="*{password}" th:if="${#fields.hasErrors('password')}"></div>
+                </div>
+                <div class="password mb-3">
+                    <label class="sr-only" for="signup-password">Confirm Password</label>
+                    <input class="form-control signup-password" placeholder="Confirm password" required="required"
+                           th:field="*{confirmPassword}" type="password">
+                    <div th:errors="*{confirmPassword}" th:if="${#fields.hasErrors('confirmPassword')}"></div>
+                </div>
+                <div class="extra mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" required th:field="*{acceptTerms}" type="checkbox" value="">
+                        <label class="form-check-label" for="acceptTerms">
+                            I agree to Portal's <a class="app-link" href="#">Terms of Service</a> and <a class="app-link"
+                                                                                                         href="#">Privacy
+                            Policy</a>.
+                        </label>
+                        <div th:errors="*{acceptTerms}" th:if="${#fields.hasErrors('acceptTerms')}"></div>
+                    </div>
+                </div><!--//extra-->
+
+                <div class="text-center">
+                    <button type="submit">Sign Up</button>
+                </div>
+            </form><!--//auth-form-->
+
+            <div class="auth-option text-center pt-5">Already have an account? <a class="text-link" th:href="@{/login}">Log
+                in</a></div>
         </div>
-        <div class="textbox">
-            <input type="text" placeholder="Surname" name="surname" required>
-        </div>
-        <div class="textbox">
-            <input type="date" placeholder="Birthdate" name="birthdate" required>
-        </div>
-        <div class="textbox">
-            <input type="email" placeholder="Email" name="email" required>
-        </div>
-        <div class="textbox">
-            <input type="text" placeholder="Username" name="username" required>
-        </div>
-        <div class="textbox">
-            <input type="password" placeholder="Password" name="password" required>
-        </div>
-        <div class="textbox">
-            <input type="password" placeholder="Confirm Password" name="confirm-password" required>
-        </div>
-        <div class="textbox">
-            <input type="password" placeholder="Confirm Password" name="confirm-password" required>
-        </div>
-        <input type="submit" value="Sign Up" class="btn">
-        <p>Already have an account? <a th:href="@{/log-in}">Login</a></p>
     </div>
 </div>
-<th:block th:insert="~{/shared/_footer.html}"></th:block>
+
+    <th:block th:insert="~{/shared/_footer.html}"></th:block>

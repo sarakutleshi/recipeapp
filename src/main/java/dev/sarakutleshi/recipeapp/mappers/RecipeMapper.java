@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Mapper(componentModel = "spring")
-public interface RecipeMapper extends SimpleMapper<Recipe , RecipeDto> {
+public interface RecipeMapper extends Convert<Recipe , RecipeDto> {
     RecipeMapper INSTANCE = Mappers.getMapper(RecipeMapper.class);
 
     @Mapping(source = "user.id", target = "id")
