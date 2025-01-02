@@ -12,16 +12,15 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class UserDto {
     @PositiveOrZero(message = "User ID must be positive or zero")
-    private String id;
-    @PositiveOrZero(message = "User ID must be positive or zero")
+    private long id;
     private String username;
     private String email;
     private String name;
     private String surname;
     private LocalDate birthdate;
-    private boolean active;
 
     public String getFullName() {
         return name + " " + surname;
     }
 }
+
