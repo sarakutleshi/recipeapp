@@ -1,4 +1,4 @@
-<th:block th:insert="~{/shared/_header.html}"></th:block>
+<th:block th:insert="~{/guest/_guestheader.html}"></th:block>
 <div th:replace="~{shared/_recipe :: feature('Easy Carrot Cake')}"></div>
 
 <div style="margin-left: 30px; margin-right: 30px;">
@@ -53,23 +53,23 @@
                 <tbody>
                 <tr>
                     <td>Calories</td>
-                    <td th:text="*{calories}"></td>
+                    <td th:text="*{calories}">110 <cal></cal></td>
                 </tr>
                 <tr>
                     <td>Carbs</td>
-                    <td th:text="*{carbs}"></th></td>
+                    <td th:text="*{carbs}">30 carbs</th></td>
                 </tr>
                 <tr>
                     <td>Fat</td>
-                    <td th:text="*{fat}"></td>
+                    <td th:text="*{fat}">10 fat</td>
                 </tr>
                 <tr>
                     <td>Protein</td>
-                    <td th:text="*{protein}"></td>
+                    <td th:text="*{protein}">30 protein</td>
                 </tr>
                 <tr>
                     <td>Fiber</td>
-                    <td th:text="*{fiber}"></td>
+                    <td th:text="*{fiber}">0 fiber</td>
                 </tr>
                 </tbody>
             </table>
@@ -140,4 +140,4 @@
     src='')}"></div>
 </section>
 
-<th:block th:insert="~{/shared/_footer.html}"></th:block>
+<th:block th:insert="~{/guest/_guestfooter.html}"></th:block>

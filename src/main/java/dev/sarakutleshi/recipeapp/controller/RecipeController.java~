@@ -8,6 +8,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class RecipeController {
 
+    @GetMapping("/guest-home")
+    public String index(Model model) {
+        model.addAttribute("pageTitle", "Guest Home Page");
+        return "guestHomePage";
+    }
+
+
+    @GetMapping("/about")
+    public String about(Model model) {
+        model.addAttribute("pageTitle", "About Page");
+        return "about";
+    }
+
+    @GetMapping("/blog")
+    public String contact(Model model) {
+        model.addAttribute("pageTitle", "Blog Page");
+        return "blog";
+    }
+
     @GetMapping("/view-recipe")
     public String stats(Model model) {
         Recipe recipe = new Recipe();
@@ -32,5 +51,17 @@ public class RecipeController {
         return "viewRecipe";
     }
 
+
+    @GetMapping("/add-yours")
+    public String addYours(Model model) {
+        model.addAttribute("pageTitle", "Add Your Recipe");
+        return "addYours";
+    }
+
+    @GetMapping("/recipe")
+    public String viewRecipe(Model model) {
+        model.addAttribute("pageTitle", "Recipe");
+        return "recipe";
+    }
 
 }

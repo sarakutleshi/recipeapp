@@ -33,7 +33,7 @@ public class HomeController {
     @GetMapping("/add-yours")
     public String addYours(Model model) {
         model.addAttribute("pageTitle", "Add Your Recipe");
-        return "/addYours";
+        return "addYours";
     }
 
     @GetMapping("/recipe")

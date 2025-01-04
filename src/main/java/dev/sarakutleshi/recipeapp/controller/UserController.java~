@@ -1,0 +1,33 @@
+package dev.sarakutleshi.recipeapp.controller;
+
+import dev.sarakutleshi.recipeapp.services.UserService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class UserController {
+    // me i mar te dhenat e userit
+    private final UserService userService;
+
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @GetMapping("/user-home")
+    public String userHome(HttpServletRequest request) {
+        // Check if the user session exists
+        HttpSession session = request.getSession(false);  // false means it doesn't create a new session if none exists
+        if (session == null || session.getAttribute("user") == null) {
+            // User is not logged in, redirect to login page
+            return "redirect:/guest-home";
+        }
+        // User is logged in, proceed to the user-home page
+        return "userHomePage";  // your home page for logged-in users
+    }
+
+    // You can also implement other protected routes using the same logic
+}
+

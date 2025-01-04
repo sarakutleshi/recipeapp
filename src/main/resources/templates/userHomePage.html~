@@ -1,4 +1,4 @@
-<th:block th:insert="~{/user/_userheader.html}"></th:block>
+<th:block th:insert="~{/shared/_guestheader.html}"></th:block>
 
 
 
@@ -98,4 +98,4 @@
     </div>
 </section>
 
-<th:block th:insert="~{/user/_userfooter.html}"></th:block>
+<th:block th:insert="~{/shared/_guestfooter.html}"></th:block>
