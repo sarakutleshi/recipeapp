@@ -1,5 +1,0 @@
-<th:block th:insert="~{/shared/_guestheader.html}"></th:block>
-
-
-
-<th:block th:insert="~{/shared/_guestfooter.html}"></th:block>
