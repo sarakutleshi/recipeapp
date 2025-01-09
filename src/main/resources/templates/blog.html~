@@ -1,0 +1,87 @@
+<th:block th:insert="~{/guest/_guestheader.html}"></th:block>
+
+<section  class="featured-recipes" style="margin-left: 10px">
+    <div class="recipe-card" >
+        <img src="https://i.pinimg.com/236x/44/92/69/4492697e29136062eef374416cf7e33e.jpg" alt="Recipe 3">
+        <h3>Unlock the benefits of Intermittent Fasting</h3>
+        <p>Intermittent fasting (IF) has gained significant attention for its potential health benefits.
+            <br>It involves cycling between periods of eating and fasting...</p>
+        <a href="#">View More</a>
+    </div>
+    <div class="recipe-card">
+        <img src="https://i.pinimg.com/236x/6b/67/96/6b6796f35b567183d38481eb7699489e.jpg" alt="Recipe 2">
+        <h3>The impact of Sugar Consuming on Your Health</h3>
+        <p>Consuming too much sugar, particularly added sugars,
+            <br>can have a significant negative impact on your health...</p>
+        <a href="#">View More</a>
+    </div>
+    <div class="recipe-card">
+        <img alt="Recipe 2" src="https://i.pinimg.com/236x/6b/67/96/6b6796f35b567183d38481eb7699489e.jpg">
+        <h3>The impact of Sugar Consuming on Your Health</h3>
+        <p>Consuming too much sugar, particularly added sugars,
+            <br>can have a significant negative impact on your health...</p>
+        <a href="#">View More</a>
+    </div>
+</section>
+
+<section class="featured-recipes" style="margin-left: 10px">
+    <div class="recipe-card">
+        <img src="https://i.pinimg.com/236x/12/34/56/12345678abcd1234.jpg" alt="Recipe 8">
+        <h3>Top 7 Morning Routines for Better Productivity</h3>
+        <p>Start your day right with simple and effective routines
+            <br>to boost your productivity and energy levels...</p>
+        <a href="#">View More</a>
+    </div>
+    <div class="recipe-card">
+        <img src="https://i.pinimg.com/236x/34/12/78/341278abcdef5678.jpg" alt="Recipe 9">
+        <h3>Understanding the Power of Mindful Eating</h3>
+        <p>Mindful eating can transform your relationship with food.
+            <br>Learn how to slow down and savor every bite...</p>
+        <a href="#">View More</a>
+    </div>
+    <div class="recipe-card">
+        <img src="https://i.pinimg.com/236x/56/78/34/567834fedcba1234.jpg" alt="Recipe 10">
+        <h3>Plant-Based Diets: Myths and Facts</h3>
+        <p>Discover the truth about plant-based diets and
+            <br>how they can benefit your health and the planet...</p>
+        <a href="#">View More</a>
+    </div>
+    <div class="recipe-card">
+        <img src="https://i.pinimg.com/236x/78/90/12/789012abcdef4567.jpg" alt="Recipe 11">
+        <h3>How to Build a Sustainable Workout Routine</h3>
+        <p>Consistency is key when it comes to fitness. Check out
+            <br>these tips to build a workout routine that lasts...</p>
+        <a href="#">View More</a>
+    </div>
+    <div class="recipe-card">
+        <img src="https://i.pinimg.com/236x/90/12/34/901234abcdef7890.jpg" alt="Recipe 12">
+        <h3>5 Herbal Teas That Promote Relaxation</h3>
+        <p>From chamomile to lavender, explore the best herbal teas
+            <br>to help you unwind after a long day...</p>
+        <a href="#">View More</a>
+    </div>
+    <div class="recipe-card">
+        <img src="https://i.pinimg.com/236x/ab/cd/ef/abcdef1234567890.jpg" alt="Recipe 13">
+        <h3>Boosting Mental Health Through Gratitude</h3>
+        <p>Practicing gratitude daily can have profound effects on
+            <br>your mental well-being and overall outlook on life...</p>
+        <a href="#">View More</a>
+    </div>
+    <div class="recipe-card">
+        <img src="https://i.pinimg.com/236x/ba/dc/fe/badcfe1234567890.jpg" alt="Recipe 14">
+        <h3>Why Sleep Hygiene Matters More Than You Think</h3>
+        <p>Quality sleep is critical for your health. Learn how to
+            <br>optimize your sleep environment for better rest...</p>
+        <a href="#">View More</a>
+    </div>
+    <div class="recipe-card">
+        <img src="https://i.pinimg.com/236x/cd/ef/ba/cdefba0987654321.jpg" alt="Recipe 15">
+        <h3>Secrets to Staying Active During Busy Days</h3>
+        <p>Don't let a packed schedule keep you from staying active.
+            <br>Try these simple strategies to fit exercise into your day...</p>
+        <a href="#">View More</a>
+    </div>
+</section>
+
+
+<th:block th:insert="~{/guest/_guestfooter.html}"></th:block>
