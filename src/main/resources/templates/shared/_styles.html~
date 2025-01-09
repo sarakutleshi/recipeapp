@@ -6,4 +6,3 @@
 <link rel="stylesheet" th:href="@{css/add-yours.css}">
 <link rel="stylesheet" th:href="@{css/recipe.css}">
 <link rel="stylesheet" th:href="@{css/signup.css}">
-<link rel="stylesheet" th:href="@{css/about.css}">

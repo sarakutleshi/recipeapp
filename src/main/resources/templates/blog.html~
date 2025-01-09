@@ -1,85 +1,94 @@
 <th:block th:insert="~{/guest/_guestheader.html}"></th:block>
 
-<section  class="featured-recipes" style="margin-left: 10px">
-    <div class="recipe-card" >
-        <img src="https://i.pinimg.com/236x/44/92/69/4492697e29136062eef374416cf7e33e.jpg" alt="Recipe 3">
-        <h3>Unlock the benefits of Intermittent Fasting</h3>
-        <p>Intermittent fasting (IF) has gained significant attention for its potential health benefits.
-            <br>It involves cycling between periods of eating and fasting...</p>
-        <a href="#">View More</a>
+<section class="featured-recipes" style="margin-left: 10px">
+    <div class="recipe-card" th:insert="~{/shared/_blog :: showPost(
+      imageUrl='https://i.pinimg.com/736x/62/9f/b5/629fb51f2f1a40beb15b8a581211ba24.jpg',
+      username='The impact of Sugar Consuming on Your Health',
+      content='Consuming too much sugar, particularly added sugars, can have a significant negative impact on your health...',
+      src='/blog/1')}">
     </div>
-    <div class="recipe-card">
-        <img src="https://i.pinimg.com/236x/6b/67/96/6b6796f35b567183d38481eb7699489e.jpg" alt="Recipe 2">
-        <h3>The impact of Sugar Consuming on Your Health</h3>
-        <p>Consuming too much sugar, particularly added sugars,
-            <br>can have a significant negative impact on your health...</p>
-        <a href="#">View More</a>
+
+    <div class="recipe-card" th:insert="~{/shared/_blog :: showPost(
+      imageUrl='https://i.pinimg.com/736x/55/cc/3c/55cc3cbe8dee5a8a7eafe8939175ed19.jpg',
+      username='Unlock the benefits of Intermittent Fasting',
+      content='Intermittent fasting has gained significant attention for its potential health benefits. It involves cycling between periods of eating and fasting...',
+      src='/blog/2')}">
     </div>
-    <div class="recipe-card">
-        <img alt="Recipe 2" src="https://i.pinimg.com/236x/6b/67/96/6b6796f35b567183d38481eb7699489e.jpg">
-        <h3>The impact of Sugar Consuming on Your Health</h3>
-        <p>Consuming too much sugar, particularly added sugars,
-            <br>can have a significant negative impact on your health...</p>
-        <a href="#">View More</a>
+
+    <div class="recipe-card" th:insert="~{/shared/_blog :: showPost(
+      imageUrl='https://i.pinimg.com/736x/b4/d3/fa/b4d3fa1e810b5f453642e659cae5f529.jpg',
+      username='Secrets to Staying Active During Busy Days',
+      content='Don\'t let a packed schedule keep you from staying active. Try these simple strategies to fit exercise into your day...',
+      src='/blog/3')}">
     </div>
 </section>
 
 <section class="featured-recipes" style="margin-left: 10px">
-    <div class="recipe-card">
-        <img src="https://i.pinimg.com/236x/12/34/56/12345678abcd1234.jpg" alt="Recipe 8">
-        <h3>Top 7 Morning Routines for Better Productivity</h3>
-        <p>Start your day right with simple and effective routines
-            <br>to boost your productivity and energy levels...</p>
-        <a href="#">View More</a>
+    <div class="recipe-card" th:insert="~{/shared/_blog :: showPost(
+      imageUrl='https://i.pinimg.com/736x/41/46/0b/41460b7068fb799e2f4e3d5ae974f7ad.jpg',
+      username='10 Superfoods to Boost Your Immune System',
+      content='Incorporating superfoods like berries, nuts, and leafy greens into your diet can significantly enhance your immune health...',
+      src='/blog/4')}">
     </div>
-    <div class="recipe-card">
-        <img src="https://i.pinimg.com/236x/34/12/78/341278abcdef5678.jpg" alt="Recipe 9">
-        <h3>Understanding the Power of Mindful Eating</h3>
-        <p>Mindful eating can transform your relationship with food.
-            <br>Learn how to slow down and savor every bite...</p>
-        <a href="#">View More</a>
+
+    <div class="recipe-card" th:insert="~{/shared/_blog :: showPost(
+      imageUrl='https://i.pinimg.com/736x/f1/22/cd/f122cd5c7942be87e9c4f2b2bfbb9c57.jpg',
+      username='How to Build a Sustainable Workout Routine',
+      content='Consistency is key when it comes to fitness. Check out these tips to build a workout routine that lasts...',
+      src='/blog/11')}">
     </div>
-    <div class="recipe-card">
-        <img src="https://i.pinimg.com/236x/56/78/34/567834fedcba1234.jpg" alt="Recipe 10">
-        <h3>Plant-Based Diets: Myths and Facts</h3>
-        <p>Discover the truth about plant-based diets and
-            <br>how they can benefit your health and the planet...</p>
-        <a href="#">View More</a>
+
+    <div class="recipe-card" th:insert="~{/shared/_blog :: showPost(
+      imageUrl='https://i.pinimg.com/736x/40/ac/09/40ac095cf913620afcc00a8038367c93.jpg',
+      username='The Role of Gut Health in Overall Wellness',
+      content='Your gut health impacts everything from digestion to mental health. Discover ways to support your gut microbiome...',
+      src='/blog/6')}">
     </div>
-    <div class="recipe-card">
-        <img src="https://i.pinimg.com/236x/78/90/12/789012abcdef4567.jpg" alt="Recipe 11">
-        <h3>How to Build a Sustainable Workout Routine</h3>
-        <p>Consistency is key when it comes to fitness. Check out
-            <br>these tips to build a workout routine that lasts...</p>
-        <a href="#">View More</a>
+</section>
+
+<section class="featured-recipes" style="margin-left: 10px">
+    <div class="recipe-card" th:insert="~{/shared/_blog :: showPost(
+      imageUrl='https://i.pinimg.com/736x/5c/b8/35/5cb835bdf2491ad0b5a3d28b5c40702f.jpg',
+      username='5 Easy Ways to Reduce Food Waste',
+      content='Reducing food waste helps the environment and saves money. Check out these simple strategies to minimize waste...',
+      src='/blog/7')}">
     </div>
-    <div class="recipe-card">
-        <img src="https://i.pinimg.com/236x/90/12/34/901234abcdef7890.jpg" alt="Recipe 12">
-        <h3>5 Herbal Teas That Promote Relaxation</h3>
-        <p>From chamomile to lavender, explore the best herbal teas
-            <br>to help you unwind after a long day...</p>
-        <a href="#">View More</a>
+
+    <div class="recipe-card" th:insert="~{/shared/_blog :: showPost(
+      imageUrl='https://i.pinimg.com/736x/62/08/ec/6208ec3459eb95987a3e3ea5b8cc2e0d.jpg',
+      username='Top 7 Morning Routines for Better Productivity',
+      content='Start your day right with simple and effective routines to boost your productivity and energy levels...',
+      src='/blog/8')}">
     </div>
-    <div class="recipe-card">
-        <img src="https://i.pinimg.com/236x/ab/cd/ef/abcdef1234567890.jpg" alt="Recipe 13">
-        <h3>Boosting Mental Health Through Gratitude</h3>
-        <p>Practicing gratitude daily can have profound effects on
-            <br>your mental well-being and overall outlook on life...</p>
-        <a href="#">View More</a>
+
+    <div class="recipe-card" th:insert="~{/shared/_blog :: showPost(
+      imageUrl='https://i.pinimg.com/736x/41/cb/6b/41cb6b3d18fe25522dc54de0c7b44f4d.jpg',
+      username='Understanding the Power of Mindful Eating',
+      content='Mindful eating can transform your relationship with food. Learn how to slow down and savor every bite...',
+      src='/blog/9')}">
     </div>
-    <div class="recipe-card">
-        <img src="https://i.pinimg.com/236x/ba/dc/fe/badcfe1234567890.jpg" alt="Recipe 14">
-        <h3>Why Sleep Hygiene Matters More Than You Think</h3>
-        <p>Quality sleep is critical for your health. Learn how to
-            <br>optimize your sleep environment for better rest...</p>
-        <a href="#">View More</a>
+</section>
+
+<section class="featured-recipes" style="margin-left: 10px">
+    <div class="recipe-card" th:insert="~{/shared/_blog :: showPost(
+      imageUrl='https://i.pinimg.com/736x/2a/24/fd/2a24fdef32eb470e3d759e0e37945487.jpg',
+      username='Plant-Based Diets: Myths and Facts',
+      content='Discover the truth about plant-based diets and how they can benefit your health and the planet...',
+      src='/blog/10')}">
     </div>
-    <div class="recipe-card">
-        <img src="https://i.pinimg.com/236x/cd/ef/ba/cdefba0987654321.jpg" alt="Recipe 15">
-        <h3>Secrets to Staying Active During Busy Days</h3>
-        <p>Don't let a packed schedule keep you from staying active.
-            <br>Try these simple strategies to fit exercise into your day...</p>
-        <a href="#">View More</a>
+
+    <div class="recipe-card" th:insert="~{/shared/_blog :: showPost(
+      imageUrl='https://i.pinimg.com/736x/cd/cf/0a/cdcf0ad744789bb60ea5ad51d6186b81.jpg',
+      username='How to Stay Hydrated: Tips and Tricks',
+      content='Proper hydration is essential for overall health and well-being. Learn how to stay hydrated with these practical tips...',
+      src='/blog/5')}">
+    </div>
+
+    <div class="recipe-card" th:insert="~{/shared/_blog :: showPost(
+      imageUrl='https://i.pinimg.com/736x/29/35/e5/2935e588d80006e69dfc03e2f83b8977.jpg',
+      username='5 Herbal Teas That Promote Relaxation',
+      content='From chamomile to lavender, explore the best herbal teas to help you unwind after a long day...',
+      src='/blog/12')}">
     </div>
 </section>
 

@@ -1,0 +1,28 @@
+.title {
+    color: #504040;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    margin-left: 400px;
+    margin-top: 150px;
+    font-size: 70px;
+}
+
+.first-text {
+    font-family: Inter, sans-serif;
+    margin-left: 250px;
+    gap: 0;
+}
+
+.second-text {
+    font-family: Inter, sans-serif;
+}
+
+.first-pic {
+    width: 1300px;
+    height: 350px;
+    object-fit: cover;
+    margin-top: 50px;
+    margin-left: 150px;
+    margin-bottom: 50px;
+}

@@ -1,6 +1,6 @@
 <th:block th:insert="~{/guest/_guestheader.html}"></th:block>
 
-<h1 class="title" style="margin-bottom: 30px">ABOUT US.</h1>
+<h1 class="title">ABOUT US.</h1>
 
 <section style="display: flex ;">
     <div class="first-text" style="flex: 1;">
