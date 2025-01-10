@@ -1,4 +1,4 @@
-<th:block th:insert="~{/guest/_guestheader.html}"></th:block>
+<th:block th:insert="~{/guest/guestHeader.html}"></th:block>
 
 <section class="homepage-content">
     <div class="left-side" style="color:#F6EED0">
@@ -39,7 +39,7 @@
 </section>
 
 
-<div th:replace="~{/shared/_feature :: feature('Explore Recipes')}"></div>
+<div th:replace="~{/shared/_title :: feature('Explore Recipes')}"></div>
 
 
 <section class="featured-recipes" id="home">
@@ -81,7 +81,7 @@
     </div>
 </section>
 
-<div th:replace="~{/shared/_feature :: feature('Blog')}"></div>
+<div th:replace="~{/shared/_title :: feature('Blog')}"></div>
 
 <section class="featured-recipes" style="margin-left: 300px">
     <div class="recipe-card" th:insert="~{/shared/_blog :: showPost(
@@ -99,4 +99,4 @@
     </div>
 </section>
 
-<th:block th:insert="~{/guest/_guestfooter.html}"></th:block>
+<th:block th:insert="~{/guest/guestFooter.html}"></th:block>

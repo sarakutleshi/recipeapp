@@ -1,4 +1,4 @@
-<th:block th:insert="~{/guest/_guestheader.html}"></th:block>
+<th:block th:insert="~{/user/userHeader.html}"></th:block>
 <div class="hero">
     <h1 class="hero-title">Recipe Heaven</h1>
     <p class="hero-subtitle">Your go-to collection of recipes for every taste and occasion!</p>
@@ -18,7 +18,7 @@
     </form>
 </section>
 
-<div th:replace="~{shared/_feature :: feature('Popular Recipes')}"></div>
+<div th:replace="~{shared/_title :: feature('Popular Recipes')}"></div>
 <section id="home" class="featured-recipes">
     <div class="recipe-card" th:insert="~{shared/_post :: showPost(
   imageUrl='https://i.pinimg.com/474x/3b/bd/d6/3bbdd6014ae5d7d2d7afb6352655ba2e.jpg',
@@ -54,7 +54,7 @@
     </div>
 </section>
 
-<div th:replace="~{shared/_feature :: feature('View All')}"></div>
+<div th:replace="~{shared/_title :: feature('View All')}"></div>
 <section class="featured-recipes">
     <div class="recipe-card" th:insert="~{shared/_post :: showPost(
   imageUrl='https://i.pinimg.com/474x/3b/bd/d6/3bbdd6014ae5d7d2d7afb6352655ba2e.jpg',
@@ -97,4 +97,4 @@
 </section>
 <button class="btn" style="margin-left: 700px; margin-bottom: 50px">View More</button>
 
-<th:block th:insert="~{/guest/_guestfooter.html}"></th:block>
+<th:block th:insert="~{/user/userFooter.html}"></th:block>

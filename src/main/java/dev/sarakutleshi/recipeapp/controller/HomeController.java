@@ -18,27 +18,45 @@ public class HomeController {
         return "guestHomePage";
     }
 
-    @GetMapping("/about")
-    public String about(Model model) {
+    @GetMapping("/user-about")
+    public String userAbout(Model model) {
         model.addAttribute("pageTitle", "About Page");
-        return "about";
+        return "user/userAbout";
     }
 
-    @GetMapping("/blog")
-    public String contact(Model model) {
+    @GetMapping("/guest-about")
+    public String guestAbout(Model model) {
+        model.addAttribute("pageTitle", "About Page");
+        return "guest/guestAbout";
+    }
+
+    @GetMapping("/guest-blog")
+    public String blog(Model model) {
         model.addAttribute("pageTitle", "Blog Page");
-        return "blog";
+        return "guest/guestBlog";
+    }
+
+    @GetMapping("/user-blog")
+    public String userBlog(Model model) {
+        model.addAttribute("pageTitle", "Blog Page");
+        return "user/userBlog";
     }
 
     @GetMapping("/add-yours")
     public String addYours(Model model) {
         model.addAttribute("pageTitle", "Add Your Recipe");
-        return "/addYours";
+        return "user/addYours";
     }
 
-    @GetMapping("/recipe")
-    public String viewRecipe(Model model) {
+    @GetMapping("/user-recipe")
+    public String userRecipe(Model model) {
         model.addAttribute("pageTitle", "Recipe");
-        return "recipe";
+        return "user/userRecipe";
+    }
+
+    @GetMapping("/guest-recipe")
+    public String guestRecipe(Model model) {
+        model.addAttribute("pageTitle", "Recipe");
+        return "guest/guestRecipe";
     }
 }

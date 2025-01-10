@@ -15,10 +15,7 @@ import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
@@ -109,4 +106,24 @@ public class AuthController {
 
         return "redirect:/log-in";
     }
+
+    @PostMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        Cookie cookie = new Cookie("id", "");
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
+
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+            System.out.println("Session invalidated successfully.");
+        } else {
+            System.out.println("No active session found.");
+        }
+        return "redirect:/guest-home";
+    }
+
+
+
+
 }
