@@ -54,9 +54,8 @@ public class AuthController {
 
 
             Cookie cookie = new Cookie("id", "" + userDto.getId());
-            // 30 days or 1 hour
-            cookie.setMaxAge(loginRequestDto.isRememberMe() ? 60 * 60 * 24 * 30 : 60 * 60);
-
+            // 30 days or 1 day
+            cookie.setMaxAge(60 * 60 * 24 * 30);
             response.addCookie(cookie);
 
             if (returnUrl == null || returnUrl.isBlank()) {

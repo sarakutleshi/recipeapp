@@ -22,8 +22,15 @@
                        required="required" th:field="*{password}" type="password">
                 <span class="text-danger" th:errors="*{password}"
                       th:if="${#fields.hasErrors('password')}"></span>
+
             </div>
-            <input class="btn" type="submit" value="Login">
+            <div class="form-check" style="display: flex ; justify-content: flex-start">
+                <input class="form-check-input" th:field="*{rememberMe}" type="checkbox">
+                <label class="form-check-label" for="rememberMe" style="margin-left: 10px">
+                    Remember me
+                </label>
+            </div>
+            <input class="btn" type="submit" value="Log In">
             <p>Don't have an account? <a th:href="@{/sign-up}">Sign up</a></p>
         </div>
     </form>

@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig {
-
     @Bean
     public ApplicationRunner initializer(UserDataInitializer initializer) {
         return args -> initializer.run();
