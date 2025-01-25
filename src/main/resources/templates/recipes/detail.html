@@ -1,0 +1,114 @@
+<th:block th:insert="~{/user/userHeader.html}"></th:block>
+
+
+<div id="naja">
+    <h2 class="card-title">Consumer Details
+        <th:inline th:replace="~{/fragments/_backToPreviousPage.html}"></th:inline>
+    </h2>
+
+    <hr/>
+    <div class="card">
+
+        <div class="card-body" th:unless="${recipe!=null}">
+            <div class="alert alert-danger" role="alert">
+                Recipe not found.
+            </div>
+        </div>
+
+        <div class="card-body" th:if="${recipe!=null}">
+
+            <div class="row mb-3">
+                <div class="col-sm-2">
+                    <strong>First Name</strong>
+                </div>
+                <div class="col-sm-10">
+                    <span th:text="${recipe.recipeName}"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-2">
+                    <strong>Last Name</strong>
+                </div>
+                <div class="col-sm-10">
+                    <span th:text="${recipe.authorName}"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-2">
+                    <strong>Ingredients</strong>
+                </div>
+                <div class="col-sm-10">
+                    <span th:text="${recipe.ingredients}"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-2">
+                    <strong>Category</strong>
+                </div>
+                <div class="col-sm-10">
+                    <span th:text="${recipe.category}"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-2">
+                    <strong>Servings</strong>
+                </div>
+                <div class="col-sm-10">
+                    <span th:text="${recipe.servings}"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-2">
+                    <strong>State</strong>
+                </div>
+                <div class="col-sm-10">
+                    <span th:text="${recipe.recipeExplanation}"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-2">
+                    <strong>Protein</strong>
+                </div>
+                <div class="col-sm-10">
+                    <span th:text="${recipe.protein}"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-2">
+                    <strong>Id</strong>
+                </div>
+                <div class="col-sm-10">
+                    <span th:text="${recipe.id}"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-2">
+                    <strong>Minutes To Cook</strong>
+                </div>
+                <div class="col-sm-10">
+                    <span th:text="${recipe.minutesToCook}"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-2">
+                    <strong>Hours To Cook</strong>
+                </div>
+                <div class="col-sm-10">
+                    <span th:text="${recipe.hoursToCook}"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-2">
+                    <strong>Created Date</strong>
+                </div>
+                <div class="col-sm-10">
+                    <span th:text="${recipe.createdAt}"></span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<th:block th:insert="~{/user/userFooter.html}"></th:block>

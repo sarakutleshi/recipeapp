@@ -1,0 +1,204 @@
+<th:block th:insert="~{/user/userHeader.html}"></th:block>
+
+
+<div id="naja">
+    <h2 class="card-title">New Recipe</h2>
+    <hr/>
+    <div class="card">
+        <div class="card-body">
+            <form method="post" th:object="${recipe}" id="customerForm" enctype="multipart/form-data">
+
+
+                <div class="row mb-3">
+                    <label for="id" class="col-sm-2 col-form-label">Recipe Id</label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly class="form-control" th:field="*{id}" required minlength="3"
+                               maxlength="50">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="recipeName" class="col-sm-2 col-form-label">Recipe Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" th:field="*{recipeName}" required minlength="3"
+                               maxlength="50">
+                    </div>
+                    <div class="col-sm-10">
+                        <span class="text-danger" th:if="${#fields.hasErrors('recipeName')}"
+                              th:errors="*{recipeName}"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="authorName" class="col-sm-2 col-form-label">Author Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" th:field="*{authorName}" required>
+                    </div>
+                    <div class="col-sm-10">
+                        <span class="text-danger" th:if="${#fields.hasErrors('authorName')}"
+                              th:errors="*{authorName}"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3" th:if="*{imageUrl!=null && !imageUrl.isBlank()}">
+                    <div class="col-2">
+                        Recipe Photo:
+                    </div>
+                    <div class="col-10">
+                        <img th:src="*{imageUrl}" style="width: 150px; height: 150px; border-radius: 25%"/>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="documentFile" class="col-sm-2 col-form-label">Recipe</label>
+                    <div class="col-sm-10">
+                        <input type="file" class="form-control" name="documentFile"
+                               id="documentFile" accept="image/*">
+                        <input type="hidden" th:field="*{imageUrl}"/>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="ingredients" class="col-sm-2 col-form-label">Ingredients</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" th:field="*{ingredients}">
+                    </div>
+                    <div class="col-sm-10">
+                        <span class="text-danger" th:if="${#fields.hasErrors('ingredients')}"
+                              th:errors="*{ingredients}"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="instructions" class="col-sm-2 col-form-label">Instructions</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" th:field="*{instructions}" required>
+                    </div>
+                    <div class="col-sm-10">
+                        <span class="text-danger" th:if="${#fields.hasErrors('instructions')}"
+                              th:errors="*{instructions}"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="steps" class="col-sm-2 col-form-label">Steps</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" th:field="*{steps}" required>
+                    </div>
+                    <div class="col-sm-10">
+                        <span class="text-danger" th:if="${#fields.hasErrors('steps')}" th:errors="*{steps}"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="category" class="col-sm-2 col-form-label">Category</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" th:field="*{category}" required>
+                    </div>
+                    <div class="col-sm-10">
+                        <span class="text-danger" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="recipeExplanation" class="col-sm-2 col-form-label">Recipe Explanation</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" th:field="*{recipeExplanation}" required>
+                    </div>
+                    <div class="col-sm-10">
+                        <span class="text-danger" th:if="${#fields.hasErrors('recipeExplanation')}" th:errors="*{recipeExplanation}"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="minutesToCook" class="col-sm-2 col-form-label">Preparation Time(in minutes):</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" th:field="*{minutesToCook}" required>
+                    </div>
+                    <div class="col-sm-10">
+                        <span class="text-danger" th:if="${#fields.hasErrors('minutesToCook')}" th:errors="*{minutesToCook}"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="hoursToCook" class="col-sm-2 col-form-label">Preparation Time(in hours):</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" th:field="*{hoursToCook}">
+                    </div>
+                    <div class="col-sm-10">
+                        <span class="text-danger" th:if="${#fields.hasErrors('minutesToCook')}" th:errors="*{hoursToCook}"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="servings" class="col-sm-2 col-form-label">Servings</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" th:field="*{servings}">
+                    </div>
+                    <div class="col-sm-10">
+                        <span class="text-danger" th:if="${#fields.hasErrors('servings')}" th:errors="*{servings}"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="calories" class="col-sm-2 col-form-label">Calories</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" th:field="*{calories}">
+                    </div>
+                    <div class="col-sm-10">
+                        <span class="text-danger" th:if="${#fields.hasErrors('calories')}" th:errors="*{calories}"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="protein" class="col-sm-2 col-form-label">Protein</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" th:field="*{protein}">
+                    </div>
+                    <div class="col-sm-10">
+                        <span class="text-danger" th:if="${#fields.hasErrors('protein')}" th:errors="*{protein}"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="fat" class="col-sm-2 col-form-label">Fat</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" th:field="*{fat}">
+                    </div>
+                    <div class="col-sm-10">
+                        <span class="text-danger" th:if="${#fields.hasErrors('fat')}" th:errors="*{fat}"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="carbs" class="col-sm-2 col-form-label">Carbs</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" th:field="*{carbs}">
+                    </div>
+                    <div class="col-sm-10">
+                        <span class="text-danger" th:if="${#fields.hasErrors('carbs')}" th:errors="*{carbs}"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="fiber" class="col-sm-2 col-form-label">Fiber</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" th:field="*{fiber}">
+                    </div>
+                    <div class="col-sm-10">
+                        <span class="text-danger" th:if="${#fields.hasErrors('fiber')}" th:errors="*{fiber}"></span>
+                    </div>
+                </div>
+
+
+                <div class="row mb-3">
+                    <label for="createdAt" class="col-sm-2 col-form-label">Created At</label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly class="form-control" th:field="*{createdAt}" required minlength="3"
+                               maxlength="50">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="reset" class="btn btn-danger">Reset</button>
+                        <th:inline th:replace="~{/fragments/_backToPreviousPage.html}"></th:inline>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+<th:block th:insert="~{/user/userFooter.html}"></th:block>

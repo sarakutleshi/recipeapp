@@ -1,0 +1,23 @@
+<th:block th:insert="~{/user/userHeader.html}"></th:block>
+
+<div id="naja">
+    <h2 class="card-title">Consumer Details
+        <th:inline th:replace="~{/fragments/_backToPreviousPage.html}"></th:inline>
+    </h2>
+
+    <hr/>
+
+    <th:block th:replace="~{/recipes/detail.html::div.card}">
+
+    </th:block>
+
+    <div th:if="${recipe!=null}">
+        <hr/>
+        <form method="post">
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+    </div>
+
+
+</div>
+<th:block th:insert="~{/user/userFooter.html}"></th:block>

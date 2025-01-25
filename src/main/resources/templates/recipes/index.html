@@ -1,0 +1,48 @@
+<th:block th:insert="~{/user/userHeader.html}"></th:block>
+
+<div class="container my-4">
+    <h1 class="card-title">New Recipe</h1>
+    <hr/>
+
+    <div class="card">
+        <div class="card-body">
+            <h1>List of Recipes</h1>
+
+            <a class="btn btn-primary btn-lg" th:href="@{/new}" role="button">+ Add Recipe</a>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Recipe Name</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">Images</th>
+                    <th scope="col">Category</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="recipe : ${recipes}">
+                    <th scope="row" th:text="${recipe.id}"></th>
+
+                    <td th:text="${recipe.recipeName}"></td>
+                    <td th:text="${recipe.imageUrl}"></td>
+                    <td th:text="${recipe.authorName}"></td>
+                    <td th:text="${recipe.category}"></td>
+                    <td th:text="${recipe.createdAt}"></td>
+
+                    <td>
+                        <a th:href="@{/recipes/{id}/details(id=${recipe.id})}" class="btn btn-info">Details</a>
+                        <a th:href="@{/recipes/{id}/edit(id=${recipe.id})}" class="btn btn-warning">Edit</a>
+                        <a th:href="@{/recipes/{id}/delete(id=${recipe.id})}" class="btn btn-danger">Delete</a>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<th:block th:insert="~{/user/userFooter.html}"></th:block>

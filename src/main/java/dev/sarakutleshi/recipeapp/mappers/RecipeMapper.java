@@ -18,9 +18,9 @@ public interface RecipeMapper extends Convert<Recipe , RecipeDto> {
 
     @Mapping(source = "user.id", target = "id")
     @Mapping(source = "createdAt", target = "addedAt")
-    @Mapping(source = "user", target = "authorFullName", qualifiedByName = "fullName")
-    @Mapping(source = "createdAt", target = "addedAgo", qualifiedByName = "timeAgo")
-    ListingRecipeDto toListingRecipeDto(Recipe recipeEntity);
+    @Mapping(source = "user", target = "authorName", qualifiedByName = "fullName")
+    @Mapping(source = "createdAt", target = "createdAt", qualifiedByName = "timeAgo")
+
 
     @Named("fullName")
     default String fullName(User user) {
