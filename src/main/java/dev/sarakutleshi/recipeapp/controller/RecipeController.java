@@ -146,13 +146,13 @@ public class RecipeController {
     public String deleteCustomer(Model model, @PathVariable Long id) {
         var recipe = recipeService.findById(id);
         model.addAttribute("recipe", recipe);
-        return "recipes/delete";  // Render delete confirmation page
+        return "recipes/delete";
     }
 
     @PostMapping("{id}/delete")
     public String deleteCustomer(@PathVariable Long id) {
         recipeService.deleteById(id);
-        return "redirect:/index";  // Redirect to the index page after deletion
+        return "redirect:/index";
     }
 
 }
