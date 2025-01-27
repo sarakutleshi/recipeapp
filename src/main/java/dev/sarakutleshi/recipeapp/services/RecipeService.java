@@ -31,7 +31,7 @@ public class RecipeService {
         return recipeRepository.save(customer);
     }
 
-    public Recipe modify(Recipe customer) {
+    public Recipe modify(long id, Recipe customer) {
         var existCustomer = findById(customer.getId());
         if (existCustomer == null) {
             return null;
@@ -45,6 +45,10 @@ public class RecipeService {
             System.out.println("Recipe with id = " + id + " does not exist");
             return;
         }
+        recipeRepository.deleteById(id);
+    }
+
+    public void removeById(long id) {
         recipeRepository.deleteById(id);
     }
 }

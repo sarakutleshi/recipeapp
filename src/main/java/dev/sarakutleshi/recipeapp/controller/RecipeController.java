@@ -132,7 +132,7 @@ public class RecipeController {
                 System.out.println("Error: " + ex.getMessage());
             }
         }
-        recipeService.modify(recipe);
+        recipeService.modify(id, recipe);
         return "redirect:/index";
     }
     @GetMapping("{id}/details")

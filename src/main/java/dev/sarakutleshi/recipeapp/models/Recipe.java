@@ -20,13 +20,9 @@ import java.util.List;
 public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(insertable=false, updatable=false)
+    @Column(insertable = false, updatable = false)
     @PositiveOrZero
     private long id;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
 
     @Column(length = 50)
     @NotNull
@@ -36,19 +32,12 @@ public class Recipe {
     @NotNull
     private String authorName;
 
-    @ElementCollection
-    @CollectionTable(joinColumns = @JoinColumn())
-    private List<String> ingredients;
+    private String ingredients;
 
-    @ElementCollection
-    @CollectionTable(joinColumns = @JoinColumn())
-    private List<String> instructions;
+    private String instructions;
 
-    @ElementCollection
-    @CollectionTable(joinColumns = @JoinColumn())
-    private List<String> cookingNotes;
+    private String steps;
 
-    @Column(length = 500)
     private String imageUrl;
 
     private String category;
@@ -58,11 +47,10 @@ public class Recipe {
 
     @Positive
     @NotNull
-    private int prepTime;
+    private int minutesToCook;
 
-    @Positive
-    @NotNull
-    private int cookingTime;
+    @PositiveOrZero
+    private Integer hoursToCook = 0;
 
     @Positive
     private int servings;
@@ -82,12 +70,10 @@ public class Recipe {
     @Positive
     private String fiber;
 
-    private boolean accessible;
 
     private boolean deleted;
 
-    @Column(nullable = false)
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     private LocalDateTime modifiedAt;
 

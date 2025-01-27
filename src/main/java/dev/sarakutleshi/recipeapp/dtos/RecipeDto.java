@@ -1,6 +1,7 @@
 package dev.sarakutleshi.recipeapp.dtos;
 
 
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -21,24 +22,29 @@ public class RecipeDto {
     @Positive
     private long userId;
 
+    @NotEmpty(message = "Recipe name cannot be empty")
     private String recipeName;
+    @NotEmpty(message = "Author name cannot be empty")
     private String authorName;
-    private List<String> ingredients;
-    private List<String> instructions;
-    private List<String> cookingNotes;
+    private String ingredients;
+    private String instructions;
+    private String steps;
     private String imageUrl;
     private String category;
     private String recipeExplanation;
     private int prepTime;
-    private int cookingTime;
+    private int minutes;
+    private int hours;
     private int servings;
     private int calories;
-    private String protein;
-    private String fat;
-    private String carbs;
-    private String fiber;
+    private int protein;
+    private int fat;
+    private int carbs;
+    private int fiber;
+
     @NotNull
     private LocalDateTime createdAt = LocalDateTime.now();
 
     private LocalDateTime modifiedAt;
+
 }

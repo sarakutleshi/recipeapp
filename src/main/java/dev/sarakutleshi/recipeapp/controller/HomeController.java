@@ -42,11 +42,6 @@ public class HomeController {
         return "user/userBlog";
     }
 
-    @GetMapping("/add-yours")
-    public String addYours(Model model) {
-        model.addAttribute("pageTitle", "Add Your Recipe");
-        return "user/addYours";
-    }
 
     @GetMapping("/user-recipe")
     public String userRecipe(Model model) {
@@ -59,4 +54,11 @@ public class HomeController {
         model.addAttribute("pageTitle", "Recipe");
         return "guest/guestRecipe";
     }
+
+    @GetMapping("/add-yours")
+    public String addYours(Model model) {
+        model.addAttribute("pageTitle", "Add Your Recipe");
+        return "addYours";  // This should return the 'new.html' view
+    }
+
 }
