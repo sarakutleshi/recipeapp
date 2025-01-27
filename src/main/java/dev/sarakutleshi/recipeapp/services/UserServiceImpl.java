@@ -6,7 +6,7 @@ import dev.sarakutleshi.recipeapp.exceptions.EmailExistException;
 import dev.sarakutleshi.recipeapp.exceptions.UserNotFoundException;
 import dev.sarakutleshi.recipeapp.exceptions.UsernameExistException;
 import dev.sarakutleshi.recipeapp.exceptions.WrongPasswordException;
-import dev.sarakutleshi.recipeapp.mappers.UserMapperImpl;
+import dev.sarakutleshi.recipeapp.mappers.UserMapper;
 import dev.sarakutleshi.recipeapp.models.User;
 import dev.sarakutleshi.recipeapp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +17,11 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository repository;
-    private final UserMapperImpl userMapperImpl;
+    private final UserMapper userMapperImpl;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserRepository repository, UserMapperImpl userMapperImpl, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository repository, UserMapper userMapperImpl, PasswordEncoder passwordEncoder) {
         this.repository = repository;
         this.userMapperImpl = userMapperImpl;
         this.passwordEncoder = passwordEncoder;
@@ -57,4 +57,3 @@ public class UserServiceImpl implements UserService {
         return true;
     }
 }
-

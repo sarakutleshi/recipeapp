@@ -1,5 +1,6 @@
 package dev.sarakutleshi.recipeapp.dtos;
 
+import dev.sarakutleshi.recipeapp.models.User;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,8 +20,18 @@ public class UserDto {
     private String surname;
     private LocalDate birthdate;
 
-    public String getFullName() {
+    public UserDto(User user) {
+        this.id = user.getId();
+        this.username = user.getUsername();
+        this.email = user.getEmail();
+        this.name = user.getName();
+        this.surname = user.getSurname();
+        this.birthdate = user.getBirthdate();
+    }
+
+    public String getUser() {
         return name + " " + surname;
     }
+
 }
 

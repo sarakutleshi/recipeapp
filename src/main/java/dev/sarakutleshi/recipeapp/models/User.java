@@ -36,6 +36,6 @@ public class User {
     @Column(nullable = false)
     private LocalDate birthdate;
 
-    @OneToMany(mappedBy = "user")
-    private List<Recipe> recipes;
+//    @OneToMany(mappedBy = "user")
+//    private List<Recipe> recipes;
 }
