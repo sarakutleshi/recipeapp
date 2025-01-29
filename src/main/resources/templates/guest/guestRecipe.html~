@@ -6,6 +6,17 @@
 </div>
 
 
+<!-- Display Search Results -->
+<section class="search-results">
+    <h2>Search Results</h2>
+    <ul id="recipeList">
+        <li th:each="recipe : ${recipes}" class="recipe-item">
+            <a th:href="@{/recipes/detail/{id}(id=${recipe.id})}" th:text="${recipe.name}"></a>
+        </li>
+    </ul>
+    <p id="noResults" th:if="${recipes == null or recipes.isEmpty()}">No recipes found.</p>
+</section>
+
 <div th:replace="~{shared/_title :: feature('Popular Recipes')}"></div>
 
 <section id="home" class="featured-recipes">
