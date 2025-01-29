@@ -5,6 +5,7 @@ import dev.sarakutleshi.recipeapp.repositories.RecipeRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RecipeService {
@@ -55,7 +56,6 @@ public class RecipeService {
     public List<Recipe> searchByName(String name) {
         return recipeRepository.findByRecipeNameContainingIgnoreCase(name);
     }
-
 
 
 }

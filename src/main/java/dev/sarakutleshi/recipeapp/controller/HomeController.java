@@ -1,11 +1,22 @@
 package dev.sarakutleshi.recipeapp.controller;
 
+import dev.sarakutleshi.recipeapp.models.Recipe;
+import dev.sarakutleshi.recipeapp.services.RecipeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class HomeController {
+
+    RecipeService recipeService;
+
+    @Autowired
+    public HomeController(RecipeService recipeService) {
+        this.recipeService = recipeService;
+    }
 
     @GetMapping("")
     public String home() {
@@ -55,10 +66,20 @@ public class HomeController {
         return "guest/guestRecipe";
     }
 
-    @GetMapping("/add-yours")
-    public String addYours(Model model) {
-        model.addAttribute("pageTitle", "Add Your Recipe");
-        return "addYours";  // This should return the 'new.html' view
+    @GetMapping("/view-recipe/{id}")
+    public String viewRecipe(@PathVariable("id") Long id, Model model) {
+        // Assuming a service method that fetches the recipe from a database
+        Recipe recipe = recipeService.findById(id);
+
+        if (recipe != null) {
+            model.addAttribute("pageTitle", "View Recipe Page");
+            model.addAttribute("recipe", recipe);
+        } else {
+            model.addAttribute("error", "Recipe not found");
+        }
+        return "viewRecipe";
     }
+
+
 
 }

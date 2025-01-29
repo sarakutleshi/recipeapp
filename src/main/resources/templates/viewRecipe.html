@@ -1,49 +1,37 @@
-<th:block th:insert="~{/guest/guestHeader.html}"></th:block>
-<div th:replace="~{shared/_recipe :: feature('Easy Carrot Cake')}"></div>
+<th:block th:insert="~{/user/userHeader.html}"></th:block>
 
-<div style="margin-left: 30px; margin-right: 30px;">
-    <div class="paragraph" style="margin-left: 100px">
-        <div>
-            <p th:text="*{recipeExplanation}"></p></div>
-    </div>
-    <div class="recipe-description">
-        <div class="recipe-description-button">
-            <h6>Author Name</h6>
-            <p th:text="*{authorName}">Name</p>
+<form method="get" th:action="@{/view-recipe/{id}(id=${recipe.id})}" th:object="${recipe}">
+    <div class="recipe-container">
+        <!-- Recipe Explanation -->
+        <div class="recipe-explanation">
+            <p th:text="*{recipeExplanation}"></p>
         </div>
-        <div class="recipe-description-button">
-            <h6>Prep Time</h6>
-            <p th:text="*{prepTime}">10 min</p>
-        </div>
-        <div class="recipe-description-button">
-            <h6>Cook Time</h6>
-            <p th:text="*{cookingTime}">60 min</p>
-        </div>
-        <div class="recipe-description-button">
-            <h6>Serving</h6>
-            <p th:text="*{servings}">4 servings</p>
-        </div>
-    </div>
-    <div class="container" style="display: flex; justify-content: space-between;">
-        <div class="recipe-container" style="flex: 1; margin-right: 20px;">
-            <div class="carousel">
-                <div class="carousel-images">
-                    <div class="recipe-image">
-                        <img alt="Carrot Cake" style="width: 450px; height: 600px" src="https://vikalinka.com/wp-content/uploads/2022/03/Carrot-Cake-14-Edit.jpg">
-                    </div>
-                    <div class="recipe-image">
-                        <img alt="Carrot Cake" style="width: 550px; height: 600px" src="https://vikalinka.com/wp-content/uploads/2022/03/Carrot-Cake-10-Edit.jpg">
-                    </div>
-                    <div class="recipe-image">
-                        <img alt="Carrot Cake" style="width: 500px; height: 600px" src="https://vikalinka.com/wp-content/uploads/2022/03/Carrot-Cake-6-Edit.jpg">
-                    </div>
-                </div>
-                <button class="carousel-prev" onclick="moveSlide(-1)">&#10094;</button>
-                <button class="carousel-next" onclick="moveSlide(1)">&#10095;</button>
+
+        <!-- Recipe Description -->
+        <div class="recipe-description">
+            <div class="recipe-description-item">
+                <h6>Author Name</h6>
+                <p th:text="*{authorName}"></p>
+            </div>
+            <div class="recipe-description-item">
+                <h6>Cook Time</h6>
+                <p th:text="*{minutesToCook}">60 min</p>
+            </div>
+            <div class="recipe-description-item">
+                <h6>Serving</h6>
+                <p th:text="*{servings}">4 servings</p>
             </div>
         </div>
 
-        <div class="nutrition-table" style="flex: 1; max-width: 350px; height: 280px">
+        <!-- Recipe Image -->
+        <div class="recipe-image-container">
+            <div class="recipe-image">
+                <img th:src="*{imageUrl}" alt="Recipe Image">
+            </div>
+        </div>
+
+        <!-- Nutritional Information -->
+        <div class="nutrition-table">
             <table>
                 <thead>
                 <tr>
@@ -53,91 +41,227 @@
                 <tbody>
                 <tr>
                     <td>Calories</td>
-                    <td th:text="*{calories}">110 <cal></cal></td>
+                    <td th:text="*{calories}"></td>
                 </tr>
                 <tr>
                     <td>Carbs</td>
-                    <td th:text="*{carbs}">30 carbs</th></td>
+                    <td th:text="*{carbs}"></td>
                 </tr>
                 <tr>
                     <td>Fat</td>
-                    <td th:text="*{fat}">10 fat</td>
+                    <td th:text="*{fat}"></td>
                 </tr>
                 <tr>
                     <td>Protein</td>
-                    <td th:text="*{protein}">30 protein</td>
+                    <td th:text="*{protein}"></td>
                 </tr>
                 <tr>
                     <td>Fiber</td>
-                    <td th:text="*{fiber}">0 fiber</td>
+                    <td th:text="*{fiber}"></td>
                 </tr>
                 </tbody>
             </table>
         </div>
-    </div>
 
-    <div class="ingredients-list">
-        <h4>Select Ingredients:</h4>
-        <label>
-            <input class="ingredient" id="selectAll" onclick="toggleAll(this)" type="checkbox"> Select All
-        </label><br>
-        <ul style="list-style-type: none; padding-left: 0;">
-            <li th:each="ingredient : ${recipe.ingredients}">
-                <label>
-                    <input class="ingredient" type="checkbox" value="|${ingredient}|">
-                    <span th:text="${ingredient}">Ingredient</span>
-                </label><br>
-            </li>
-        </ul>
-    </div>
+        <!-- Ingredients List -->
+        <div class="ingredients-list">
+            <h4>Ingredients:</h4>
+            <ul>
+                <li th:each="ingredient : ${recipe.ingredients}" th:text="${ingredient}"></li>
+            </ul>
+        </div>
 
-    <div class="instruction" style="margin-left: 50px ; margin-top: 20px">
-        <h4>Instruction:</h4>
-        <ul style="list-style-type: none; padding-left: 0;">
-            <li th:each="instruction : ${recipe.instructions}">
-                <label>
-                    <input class="recipe-instruction" type="checkbox" value="|${instruction}|">
-                    <span th:utext="${instruction}">Instruction</span>
-                </label><br>
-            </li>
-        </ul>
-    </div>
-
-    <div class="instruction" style="margin-left: 50px; margin-top: 20px">
-        <h4>Cooking Note:</h4>
-        <ul style="list-style-type: none; padding-left: 0;">
-            <li th:each="cookingNotes : ${recipe.cookingNotes}">
-                <label>
-                    <input class="recipe-instruction" type="checkbox" value="|${cookingNotes}|">
-                    <span th:utext="${cookingNotes}">Cooking Notes</span>
-                </label><br>
-            </li>
-        </ul>
-    </div>
-
-    <div class="features">
-        <div>
-            <h5 style="margin-left: 100px; color: #333333; font-size: xx-large">You May Like This</h5>
+        <!-- Instructions -->
+        <div class="instructions">
+            <h4>Instructions:</h4>
+            <p th:text="*{instructions}"></p>
         </div>
     </div>
+</form>
 
-</div>
-<section class="featured-recipes" id="home">
-    <div class="recipe-card" th:insert="~{shared/_post :: showPost(
-    imageUrl='https://i.pinimg.com/236x/be/db/e5/bedbe59e096e0bb5d415decd2cec8fca.jpg',
-    username='Dessert',
-    content='Easy-to-make dessert for any occasion.',
-    src='')}"></div>
-    <div class="recipe-card" th:insert="~{shared/_post :: showPost(
-    imageUrl='https://i.pinimg.com/736x/43/05/00/4305008bd4713ae637191c20d8a06ed7.jpg',
-    username='Dessert',
-    content='Easy-to-make dessert for any occasion.',
-    src='')}"></div>
-    <div class="recipe-card" th:insert="~{shared/_post :: showPost(
-    imageUrl='https://i.pinimg.com/236x/17/9a/01/179a01b9f173d8f6fc27a59921793d65.jpg',
-    username='Lunch Recipe',
-    content='Quick and delicious recipe for busy days.',
-    src='')}"></div>
-</section>
+<th:block th:insert="~{/user/userFooter.html}"></th:block>
+<style>
+    /* General Styles */
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
 
-<th:block th:insert="~{/guest/guestFooter.html}"></th:block>
+    .recipe-container {
+        width: 80%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    h6 {
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    p {
+        font-size: 14px;
+        color: #555;
+    }
+
+    h4 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    /* Recipe Explanation */
+    .recipe-explanation {
+        margin-bottom: 20px;
+        padding: 15px;
+        background-color: #f4f4f4;
+        border-radius: 8px;
+        font-size: 16px;
+        color: #333;
+    }
+
+    /* Recipe Description */
+    .recipe-description {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .recipe-description-item {
+        width: 30%;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+    }
+
+    .recipe-description-item h6 {
+        margin: 0;
+    }
+
+    .recipe-description-item p {
+        margin-top: 5px;
+        font-size: 14px;
+        color: #555;
+    }
+
+    /* Recipe Image */
+    .recipe-image-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .recipe-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Nutritional Information */
+    .nutrition-table {
+        width: 100%;
+        margin-bottom: 30px;
+        background-color: #f9f9f9;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .nutrition-table table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .nutrition-table th {
+        background-color: #f4f4f4;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .nutrition-table td {
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .nutrition-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    /* Ingredients List */
+    .ingredients-list {
+        margin-bottom: 30px;
+    }
+
+    .ingredients-list ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .ingredients-list li {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 8px;
+    }
+
+    /* Instructions */
+    .instructions {
+        margin-top: 30px;
+    }
+
+    .instructions p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #555;
+    }
+
+    * {
+        font-family: Bahnschrift, sans-serif;
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+        background-color: white;
+    }
+
+
+    .container-fluid {
+        position: sticky;
+        margin-left: 250px;
+        margin-right: 200px;
+        font-family: Inter, sans-serif;
+        font-weight: inherit;
+        margin-top: 10px;
+        justify-content: center;
+    }
+
+    .left-side h3:hover {
+        color: #b66b51;
+    }
+
+    .nav-link:hover {
+        color: #f9c0ab;
+    }
+
+    .nav-link {
+        color: black;
+
+    }
+
+    .logo{
+        margin-right: 100px;
+        color: #b66b51;
+        font-size: xxx-large;
+        font-family: Bahnschrift, serif;
+    }
+
+    .logo:hover{
+        color: #a85539;
+    }
+
+</style>

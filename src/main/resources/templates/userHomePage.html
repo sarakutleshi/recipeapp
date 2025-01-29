@@ -23,7 +23,7 @@
             favorite creations with us through our app,
             <br>and you could see your dish become part of our café’s menu. Let’s cook up something amazing together!
         </p>
-        <a class="btn2" th:href="@{/add-yours}">Create New Recipe</a>
+        <a class="btn2" th:href="@{/index}">Create New Recipe</a>
 
     </div>
 </section>
@@ -36,45 +36,47 @@
 </div>
 
 
+<!-- Featured Recipes Section -->
 <section class="featured-recipes" id="home">
     <div class="recipe-card" th:insert="~{/shared/_post :: showPost(
-  imageUrl='https://i.pinimg.com/736x/60/58/e8/6058e822b53d6da473bcf65a705cc0e8.jpg',
-  username='Carrot Cake',
-  content='Easy-to-make dessert for any occasion.',
-  src='')}"></div>
+        imageUrl='https://i.pinimg.com/736x/60/58/e8/6058e822b53d6da473bcf65a705cc0e8.jpg',
+        username='Carrot Cake',
+        content='Easy-to-make dessert for any occasion.',
+        id='1')}"></div>
 
     <div class="recipe-card" th:insert="~{/shared/_post :: showPost(
-  imageUrl='https://i.pinimg.com/736x/ab/ab/61/abab61023079f79ad829293dd4426d2f.jpg',
-  username='Dinner Idea',
-  content='Healthy and tasty meal for the whole family.',
-  src='' )}"></div>
+        imageUrl='https://i.pinimg.com/736x/ab/ab/61/abab61023079f79ad829293dd4426d2f.jpg',
+        username='Dinner Idea',
+        content='Healthy and tasty meal for the whole family.',
+        id='2')}"></div>
 
     <div class="recipe-card" th:insert="~{/shared/_post :: showPost(
-  imageUrl='https://i.pinimg.com/736x/4b/1a/00/4b1a00519328027379512cebb397956a.jpg',
-  username='Dessert',
-  content='Easy-to-make dessert for any occasion.',
-  src='')}"></div>
+        imageUrl='https://i.pinimg.com/736x/4b/1a/00/4b1a00519328027379512cebb397956a.jpg',
+        username='Dessert',
+        content='Easy-to-make dessert for any occasion.',
+        id='7')}"></div>
 
     <div class="recipe-card" th:insert="~{/shared/_post :: showPost(
-  imageUrl='https://i.pinimg.com/736x/9e/9e/d2/9e9ed2b0b8fb4c2963a8cf4f4c73f65d.jpg',
-  username='Lunch Recipe',
-  content='Quick and delicious recipe for busy days.',
-  src='')}"></div>
+        imageUrl='https://i.pinimg.com/736x/9e/9e/d2/9e9ed2b0b8fb4c2963a8cf4f4c73f65d.jpg',
+        username='Lunch Recipe',
+        content='Quick and delicious recipe for busy days.',
+        id='4')}"></div>
 
     <div class="recipe-card" th:insert="~{/shared/_post :: showPost(
-  imageUrl='https://i.pinimg.com/736x/03/3f/cc/033fcc670a1e1833fc1ca94847c59366.jpg',
-  username='Dinner Idea',
-  content='Healthy and tasty meal for the whole family.',
-  src='')}"></div>
+        imageUrl='https://i.pinimg.com/736x/03/3f/cc/033fcc670a1e1833fc1ca94847c59366.jpg',
+        username='Dinner Idea',
+        content='Healthy and tasty meal for the whole family.',
+        id='5')}"></div>
 
     <div class="recipe-card" th:insert="~{/shared/_post :: showPost(
-  imageUrl='https://i.pinimg.com/736x/59/ad/7d/59ad7dfa8c1a33019081315e262f20b5.jpg',
-  username='Dessert',
-  content='Quick and delicious dessert for busy days.',
-  src='')}">
+        imageUrl='https://i.pinimg.com/736x/59/ad/7d/59ad7dfa8c1a33019081315e262f20b5.jpg',
+        username='Dessert',
+        content='Quick and delicious dessert for busy days.',
+        id='6')}">
     </div>
 </section>
 
+<!-- Blog Section -->
 <div class="row-features">
     <div>
         <h5>Blog</h5>
@@ -83,19 +85,20 @@
 
 <section class="featured-recipes" style="margin-left: 300px">
     <div class="recipe-card" th:insert="~{/shared/_blog :: showPost(
-  imageUrl='https://i.pinimg.com/736x/55/cc/3c/55cc3cbe8dee5a8a7eafe8939175ed19.jpg',
-  username='The impact of Sugar Consuming on Your Health',
-  content='Consuming too much sugar, particularly added sugars,can have a significant negative impact on your health...',
-  src='/recipes/1')}">
+        imageUrl='https://i.pinimg.com/736x/55/cc/3c/55cc3cbe8dee5a8a7eafe8939175ed19.jpg',
+        username='The impact of Sugar Consuming on Your Health',
+        content='Consuming too much sugar, particularly added sugars, can have a significant negative impact on your health...',
+        src='/recipes/1')}">
     </div>
 
     <div class="recipe-card" th:insert="~{/shared/_blog :: showPost(
-  imageUrl='https://i.pinimg.com/736x/62/9f/b5/629fb51f2f1a40beb15b8a581211ba24.jpg',
-  username='Unlock the benefits of Intermittent Fasting',
-  content='Intermittent fasting has gained significant attention for its potential health benefits.It involves cycling between periods of eating and fasting...',
-  src='/recipes/1')}">
+        imageUrl='https://i.pinimg.com/736x/62/9f/b5/629fb51f2f1a40beb15b8a581211ba24.jpg',
+        username='Unlock the benefits of Intermittent Fasting',
+        content='Intermittent fasting has gained significant attention for its potential health benefits. It involves cycling between periods of eating and fasting...',
+        src='/recipes/2')}">
     </div>
 </section>
+
 
 
 <th:block th:insert="~{/user/userFooter.html}"></th:block>

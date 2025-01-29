@@ -1,6 +1,6 @@
-<div  th:fragment="showPost(imageUrl, username, content, src)">
-    <img th:src="${imageUrl}" alt="Recipe">
+<th:block th:fragment="showPost(imageUrl, username, content, id)">
+    <img alt="Recipe" th:src="${imageUrl}" />
     <h3 th:text="${username}"></h3>
     <p th:text="${content}"></p>
-    <a th:href="@{/view-recipe}" th:with="src=${viewrecipe}">View More</a>
-</div>
+    <a th:href="@{/view-recipe/{id}(id=${id})}">View More</a>
+</th:block>
