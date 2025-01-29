@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter
@@ -24,22 +23,26 @@ public class Recipe {
     @PositiveOrZero
     private long id;
 
-    @Column(length = 50)
+    @Column(length = 50, nullable = false)
     @NotNull
     private String recipeName;
 
-    @Column(length = 50)
+    @Column(length = 50, nullable = false)
     @NotNull
     private String authorName;
 
+    @Column(columnDefinition = "TEXT")
     private String ingredients;
 
+    @Column(columnDefinition = "TEXT")
     private String instructions;
 
+    @Column(columnDefinition = "TEXT")
     private String steps;
 
     private String imageUrl;
 
+    @Column(length = 50)
     private String category;
 
     @Column(length = 1000)
@@ -59,23 +62,20 @@ public class Recipe {
     private int calories;
 
     @Positive
-    private String protein;
+    private int protein; // Changed from String to int
 
     @Positive
-    private String fat;
+    private int fat; // Changed from String to int
 
     @Positive
-    private String carbs;
+    private int carbs; // Changed from String to int
 
     @Positive
-    private String fiber;
+    private int fiber; // Changed from String to int
 
-
-    private boolean deleted;
+    private boolean deleted = false;
 
     private LocalDateTime createdAt = LocalDateTime.now();
 
     private LocalDateTime modifiedAt;
-
-
 }

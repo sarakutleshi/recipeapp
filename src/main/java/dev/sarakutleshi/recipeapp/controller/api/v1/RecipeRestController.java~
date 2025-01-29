@@ -15,26 +15,22 @@ import java.util.List;
 public class RecipeRestController {
     private final RecipeService service;
 
-    // ✅ Fetch all recipes
     @GetMapping
     public List<Recipe> findAll() {
         return service.findAll();
     }
 
-    // ✅ Fetch a single recipe by ID
     @GetMapping("/{id}")
     public Recipe findById(@PathVariable long id) {
         return service.findById(id);
     }
 
-    // ✅ Add a new recipe
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Recipe add(@Valid @RequestBody Recipe model) {
         return service.add(model);
     }
 
-    // ✅ Update a recipe
     @PutMapping("/{id}")
     public Recipe modify(@PathVariable long id, @Valid @RequestBody Recipe model) {
         if (id != model.getId()) {
@@ -43,28 +39,30 @@ public class RecipeRestController {
         return service.modify(id, model);
     }
 
-    // ✅ Delete a recipe (fixed path)
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/recipes/{id}/delete")
     public void delete(@PathVariable long id) {
         service.removeById(id);
     }
 
-    // ✅ Fetch recipe details (same as findById, so this is redundant)
-    @GetMapping("/{id}/detail")
+    @GetMapping("/recipes/{id}/edit")
+    public Recipe edit(@PathVariable long id) {
+        return service.findById(id);  // Returning recipe for editing
+    }
+
+    @GetMapping("/recipes/{id}/detail")
     public Recipe details(@PathVariable long id) {
         return service.findById(id);
     }
 
-    // ✅ Return an empty Recipe model for default post
-    @GetMapping("/default")
+
+    @GetMapping("/recipes/default")
     public Recipe defaultPost() {
-        return new Recipe();
+        return new Recipe(); // Return an empty Recipe model for default post
     }
 
-    // ✅ Corrected search functionality (Use @RequestParam instead of @PathVariable)
-    @GetMapping("/search")
-    public List<Recipe> searchByName(@RequestParam("name") String name) {
+    @GetMapping("/recipes/{id}/search")
+    public List<Recipe> searchByName(@PathVariable String name) {
         return service.searchByName(name);
     }
+
 }
