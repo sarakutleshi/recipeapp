@@ -1,6 +1,5 @@
 package dev.sarakutleshi.recipeapp.dtos;
 
-
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -10,7 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -24,8 +22,10 @@ public class RecipeDto {
 
     @NotEmpty(message = "Recipe name cannot be empty")
     private String recipeName;
+
     @NotEmpty(message = "Author name cannot be empty")
     private String authorName;
+
     private String ingredients;
     private String instructions;
     private String steps;

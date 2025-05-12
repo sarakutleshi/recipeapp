@@ -68,7 +68,6 @@ public class HomeController {
 
     @GetMapping("/view-recipe/{id}")
     public String viewRecipe(@PathVariable("id") Long id, Model model) {
-        // Assuming a service method that fetches the recipe from a database
         Recipe recipe = recipeService.findById(id);
 
         if (recipe != null) {

@@ -57,18 +57,6 @@ public class RecipeController {
             return "recipes/new";
         }
 
-        if (!documentFile.isEmpty()) {
-            try {
-                String newFilename = fileHelper.uploadFile("target/classes/static/images/recipes/",
-                        documentFile.getOriginalFilename(), documentFile.getBytes());
-
-                if (newFilename != null) {
-                    recipe.setImageUrl("/images/recipes/" + newFilename);
-                }
-            } catch (Exception ex) {
-                System.out.println("Error: " + ex.getMessage());
-            }
-        }
 
         HttpSession session = request.getSession(false);
         if (session == null) {
@@ -79,7 +67,7 @@ public class RecipeController {
         UserDto userDto = (UserDto) session.getAttribute("user");
         recipeService.add(recipe);
         redirectAttributes.addAttribute("errorId", "SUCCESS");
-        redirectAttributes.addFlashAttribute("success", "Recipe Successfully registered!");
+        redirectAttributes.addFlashAttribute("success", "User Successfully registered!");
         return "redirect:/index";
     }
 
@@ -109,18 +97,6 @@ public class RecipeController {
 
         recipe.setModifiedAt(LocalDateTime.now());
 
-        if (!documentFile.isEmpty()) {
-            try {
-                String newFilename = fileHelper.uploadFile("target/classes/static/images/recipes/",
-                        documentFile.getOriginalFilename(), documentFile.getBytes());
-
-                if (newFilename != null) {
-                    recipe.setImageUrl("/images/recipes/" + newFilename);
-                }
-            } catch (Exception ex) {
-                System.out.println("Error: " + ex.getMessage());
-            }
-        }
         recipeService.modify(id, recipe);
         return "redirect:/index";
     }
@@ -150,6 +126,6 @@ public class RecipeController {
     public String searchRecipes(@RequestParam String name, Model model) {
         List<Recipe> recipes = recipeService.searchByName(name);
         model.addAttribute("recipes", recipes);
-        return "recipes/index";  // Ensure "recipes/index" displays search results
+        return "recipes/index";
     }
 }

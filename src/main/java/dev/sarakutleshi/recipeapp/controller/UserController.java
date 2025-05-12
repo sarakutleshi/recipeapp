@@ -9,12 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class UserController {
-    // me i mar te dhenat e userit
-    private final UserService userService;
-
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
 
     @GetMapping("/user-home")
     public String userHome(HttpServletRequest request, Model model) {
