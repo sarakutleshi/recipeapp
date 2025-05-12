@@ -80,5 +80,16 @@ public class HomeController {
     }
 
 
+    @GetMapping("/account")
+    public String account(Model model) {
+        model.addAttribute("pageTitle", "Account Page");
+        return "profile/account";
+    }
+
+    @GetMapping("/edit-profile")
+    public String editProfile(Model model) {
+        model.addAttribute("pageTitle", "Edit Profile Page");
+        return "profile/editProfile";
+    }
 
 }

@@ -1,111 +1,126 @@
-<th:block th:insert="~{/user/userHeader.html}"></th:block>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            padding: 2rem;
+        }
 
-<div id="naja">
-    <h2 class="card-title">Consumer Details
-        <th:inline th:replace="~{/fragments/_backToPreviousPage.html}"></th:inline>
-    </h2>
-    <hr/>
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            border: none;
+        }
+
+        .card-body {
+            padding: 0;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #64748b;
+            padding-bottom: 0.25rem;
+        }
+
+        .detail-value {
+            color: #1e293b;
+            font-size: 1rem;
+            word-wrap: break-word;
+        }
+
+        .row.mb-3 {
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .alert-danger {
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 576px) {
+            .detail-label,
+            .detail-value {
+                text-align: left;
+            }
+        }
+    </style>
+
+</head>
+<body>
+<div class="container" id="naja">
+
     <div class="card">
-
-        <div class="card-body" th:unless="${recipe!=null}">
+<h2 class="card-title" style="display: flex; justify-content: center; margin-top: 20px; margin-bottom: 50px">Recipe Details</h2>
+        <div class="card-body" th:unless="${recipe != null}">
             <div class="alert alert-danger" role="alert">
                 Recipe not found.
             </div>
         </div>
-
-        <div class="card-body" th:if="${recipe!=null}">
-
+        <div class="card-body" th:if="${recipe != null}">
             <div class="row mb-3">
-                <div class="col-sm-2">
-                    <strong>First Name</strong>
-                </div>
-                <div class="col-sm-10">
-                    <span th:text="${recipe.recipeName}"></span>
-                </div>
+                <div class="col-sm-4 detail-label">First Name</div>
+                <div class="col-sm-8 detail-value" th:text="${recipe.recipeName}"></div>
             </div>
             <div class="row mb-3">
-                <div class="col-sm-2">
-                    <strong>Last Name</strong>
-                </div>
-                <div class="col-sm-10">
-                    <span th:text="${recipe.authorName}"></span>
-                </div>
+                <div class="col-sm-4 detail-label">Last Name</div>
+                <div class="col-sm-8 detail-value" th:text="${recipe.authorName}"></div>
             </div>
             <div class="row mb-3">
-                <div class="col-sm-2">
-                    <strong>Ingredients</strong>
-                </div>
-                <div class="col-sm-10">
-                    <span th:text="${recipe.ingredients}"></span>
-                </div>
+                <div class="col-sm-4 detail-label">Ingredients</div>
+                <div class="col-sm-8 detail-value" th:text="${recipe.ingredients}"></div>
             </div>
             <div class="row mb-3">
-                <div class="col-sm-2">
-                    <strong>Category</strong>
-                </div>
-                <div class="col-sm-10">
-                    <span th:text="${recipe.category}"></span>
-                </div>
+                <div class="col-sm-4 detail-label">Category</div>
+                <div class="col-sm-8 detail-value" th:text="${recipe.category}"></div>
             </div>
             <div class="row mb-3">
-                <div class="col-sm-2">
-                    <strong>Servings</strong>
-                </div>
-                <div class="col-sm-10">
-                    <span th:text="${recipe.servings}"></span>
-                </div>
+                <div class="col-sm-4 detail-label">Servings</div>
+                <div class="col-sm-8 detail-value" th:text="${recipe.servings}"></div>
             </div>
             <div class="row mb-3">
-                <div class="col-sm-2">
-                    <strong>State</strong>
-                </div>
-                <div class="col-sm-10">
-                    <span th:text="${recipe.recipeExplanation}"></span>
-                </div>
+                <div class="col-sm-4 detail-label">State</div>
+                <div class="col-sm-8 detail-value" th:text="${recipe.recipeExplanation}"></div>
             </div>
             <div class="row mb-3">
-                <div class="col-sm-2">
-                    <strong>Protein</strong>
-                </div>
-                <div class="col-sm-10">
-                    <span th:text="${recipe.protein}"></span>
-                </div>
+                <div class="col-sm-4 detail-label">Protein</div>
+                <div class="col-sm-8 detail-value" th:text="${recipe.protein}"></div>
             </div>
             <div class="row mb-3">
-                <div class="col-sm-2">
-                    <strong>Id</strong>
-                </div>
-                <div class="col-sm-10">
-                    <span th:text="${recipe.id}"></span>
-                </div>
+                <div class="col-sm-4 detail-label">ID</div>
+                <div class="col-sm-8 detail-value" th:text="${recipe.id}"></div>
             </div>
             <div class="row mb-3">
-                <div class="col-sm-2">
-                    <strong>Minutes To Cook</strong>
-                </div>
-                <div class="col-sm-10">
-                    <span th:text="${recipe.minutesToCook}"></span>
-                </div>
+                <div class="col-sm-4 detail-label">Minutes to Cook</div>
+                <div class="col-sm-8 detail-value" th:text="${recipe.minutesToCook}"></div>
             </div>
             <div class="row mb-3">
-                <div class="col-sm-2">
-                    <strong>Hours To Cook</strong>
-                </div>
-                <div class="col-sm-10">
-                    <span th:text="${recipe.hoursToCook}"></span>
-                </div>
+                <div class="col-sm-4 detail-label">Hours to Cook</div>
+                <div class="col-sm-8 detail-value" th:text="${recipe.hoursToCook}"></div>
             </div>
             <div class="row mb-3">
-                <div class="col-sm-2">
-                    <strong>Created Date</strong>
-                </div>
-                <div class="col-sm-10">
-                    <span th:text="${recipe.createdAt}"></span>
-                </div>
+                <div class="col-sm-4 detail-label">Created Date</div>
+                <div class="col-sm-8 detail-value" th:text="${recipe.createdAt}"></div>
             </div>
-
         </div>
-
+        <th:inline th:replace="~{/fragments/_backToPreviousPage.html}"></th:inline>
     </div>
+
 </div>
-<th:block th:insert="~{/user/userFooter.html}"></th:block>
+
+</body>
+</html>
