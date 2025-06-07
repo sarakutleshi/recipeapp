@@ -1,31 +1,36 @@
 package dev.sarakutleshi.recipeapp.controller;
 
-import dev.sarakutleshi.recipeapp.dtos.LoginRequestDto;
-import dev.sarakutleshi.recipeapp.dtos.RegisterUserRequestDto;
+import dev.sarakutleshi.recipeapp.dtos.auth.AuthResponse;
+import dev.sarakutleshi.recipeapp.dtos.auth.LoginRequestDto;
+import dev.sarakutleshi.recipeapp.dtos.recipes.RegisterUserRequestDto;
+import dev.sarakutleshi.recipeapp.dtos.user.UserDto;
 import dev.sarakutleshi.recipeapp.exceptions.EmailExistException;
-import dev.sarakutleshi.recipeapp.exceptions.UserNotFoundException;
 import dev.sarakutleshi.recipeapp.exceptions.UsernameExistException;
-import dev.sarakutleshi.recipeapp.exceptions.WrongPasswordException;
+import dev.sarakutleshi.recipeapp.services.AuthenticationService;
 import dev.sarakutleshi.recipeapp.services.UserService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
-public class AuthController {
-    private final UserService userService;
+@RequestMapping("/api/v1/auth")
+@RequiredArgsConstructor
 
-    public AuthController(UserService userService) {
-        this.userService = userService;
-    }
+public class AuthController {
+    private final AuthenticationService service;
+    private final UserService userService;
 
     @GetMapping("/log-in")
     public String login(Model model) {
@@ -34,77 +39,27 @@ public class AuthController {
     }
 
     @PostMapping("/log-in")
-    public String login(@Valid @ModelAttribute LoginRequestDto loginRequestDto,
-                        BindingResult bindingResult,
-                        HttpServletRequest request,
-                        HttpServletResponse response,
-                        @RequestParam(value = "returnUrl", required = false) String returnUrl) {
-        if (bindingResult.hasErrors()) {
-            return "auth/login";
-        }
+    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequestDto request) {
+        var user = service.authenticate(request.getEmail(), request.getPassword());
+        var token = service.generateToken(user);
+        var authResponse = new AuthResponse(token, 86400L); // 86400 seconds = 24 hours
+        return ResponseEntity.ok(authResponse);
+    }
 
-        try {
-            var userDto = userService.login(loginRequestDto.getEmail(), loginRequestDto.getPassword());
-
-            HttpSession session = request.getSession(false); // avoiding creating a new session if one exists
-            if (session == null) {
-                session = request.getSession(true); // create new session if one doesn't exist
-            }
-            session.setAttribute("user", userDto);
-
-
-            Cookie cookie = new Cookie("id", "" + userDto.getId());
-            // 30 days or 1 day
-            cookie.setMaxAge(60 * 60 * 24 * 30);
-            response.addCookie(cookie);
-
-            if (returnUrl == null || returnUrl.isBlank()) {
-                return "redirect:/user-home";
-            }
-            return "redirect:" + returnUrl;
-
-        } catch (UserNotFoundException e) {
-            bindingResult.rejectValue("email", "error.loginRequestDto", "User with this email does not exist");
-            return "auth/login";
-        } catch (WrongPasswordException e) {
-            bindingResult.rejectValue("password", "error.loginRequestDto", e.getMessage());
-            return "auth/login";
-        }
+    @PostMapping("/sign-up")
+    public ResponseEntity<Map<String, String>> signUp(@RequestBody UserDto user) {
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "User registered successfully.");
+        return ResponseEntity.ok(response);
     }
 
 
     @GetMapping("/sign-up")
     public String register(Model model) {
         model.addAttribute("registerUserRequestDto", new RegisterUserRequestDto());
-        model.addAttribute("maxDate", LocalDate.now().minusYears(18));
         return "auth/signup";
     }
 
-    @PostMapping("/sign-up")
-    public String register(@Valid @ModelAttribute RegisterUserRequestDto registerUserRequestDto,
-                           BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "auth/signup";
-        }
-
-        if (!registerUserRequestDto.getPassword().equals(registerUserRequestDto.getConfirmPassword())) {
-            bindingResult.rejectValue("password", "error.registerUserRequestDto", "Passwords do not match");
-            bindingResult.rejectValue("confirmPassword", "error.registerUserRequestDto", "Passwords do not match");
-            return "auth/signup";
-        }
-
-        try {
-            userService.register(registerUserRequestDto);
-        } catch (UsernameExistException e) {
-            bindingResult.rejectValue("username", "error.registerUserRequestDto", "Username already exists");
-            return "auth/signup";
-        } catch (EmailExistException e) {
-            bindingResult.rejectValue("email", "error.registerUserRequestDto", "Email already exists");
-            return "auth/signup";
-        }
-
-        return "redirect:/log-in";
-    }
 
     @PostMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {

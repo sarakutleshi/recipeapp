@@ -1,7 +1,7 @@
 package dev.sarakutleshi.recipeapp.services;
 
-import dev.sarakutleshi.recipeapp.dtos.RegisterUserRequestDto;
-import dev.sarakutleshi.recipeapp.dtos.UserDto;
+import dev.sarakutleshi.recipeapp.dtos.recipes.RegisterUserRequestDto;
+import dev.sarakutleshi.recipeapp.dtos.user.UserDto;
 import dev.sarakutleshi.recipeapp.exceptions.EmailExistException;
 import dev.sarakutleshi.recipeapp.exceptions.UserNotFoundException;
 import dev.sarakutleshi.recipeapp.exceptions.UsernameExistException;

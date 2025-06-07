@@ -1,4 +1,4 @@
-package dev.sarakutleshi.recipeapp.dtos;
+package dev.sarakutleshi.recipeapp.dtos.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

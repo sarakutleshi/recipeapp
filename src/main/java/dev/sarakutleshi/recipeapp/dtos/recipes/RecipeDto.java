@@ -1,4 +1,4 @@
-package dev.sarakutleshi.recipeapp.dtos;
+package dev.sarakutleshi.recipeapp.dtos.recipes;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;

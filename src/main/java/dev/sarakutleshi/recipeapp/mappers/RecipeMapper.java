@@ -1,7 +1,6 @@
 package dev.sarakutleshi.recipeapp.mappers;
 
-import dev.sarakutleshi.recipeapp.dtos.ListingRecipeDto;
-import dev.sarakutleshi.recipeapp.dtos.RecipeDto;
+import dev.sarakutleshi.recipeapp.dtos.recipes.RecipeDto;
 import dev.sarakutleshi.recipeapp.models.Recipe;
 import dev.sarakutleshi.recipeapp.models.User;
 import org.mapstruct.Mapper;

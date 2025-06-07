@@ -1,4 +1,4 @@
-package dev.sarakutleshi.recipeapp.dtos;
+package dev.sarakutleshi.recipeapp.dtos.user;
 
 import dev.sarakutleshi.recipeapp.models.User;
 import jakarta.validation.constraints.PositiveOrZero;

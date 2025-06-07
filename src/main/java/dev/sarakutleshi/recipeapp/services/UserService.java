@@ -2,8 +2,8 @@ package dev.sarakutleshi.recipeapp.services;
 
 import org.springframework.stereotype.Service;
 
-import dev.sarakutleshi.recipeapp.dtos.RegisterUserRequestDto;
-import dev.sarakutleshi.recipeapp.dtos.UserDto;
+import dev.sarakutleshi.recipeapp.dtos.recipes.RegisterUserRequestDto;
+import dev.sarakutleshi.recipeapp.dtos.user.UserDto;
 
 @Service
 public interface UserService {

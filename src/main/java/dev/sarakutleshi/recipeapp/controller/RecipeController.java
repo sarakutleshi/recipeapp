@@ -1,13 +1,12 @@
 package dev.sarakutleshi.recipeapp.controller;
 
-import dev.sarakutleshi.recipeapp.dtos.UserDto;
+import dev.sarakutleshi.recipeapp.dtos.user.UserDto;
 import dev.sarakutleshi.recipeapp.helpers.FileHelper;
 import dev.sarakutleshi.recipeapp.models.Recipe;
 import dev.sarakutleshi.recipeapp.services.RecipeService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;

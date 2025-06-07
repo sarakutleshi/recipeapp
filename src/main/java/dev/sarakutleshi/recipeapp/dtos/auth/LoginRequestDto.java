@@ -1,4 +1,4 @@
-package dev.sarakutleshi.recipeapp.dtos;
+package dev.sarakutleshi.recipeapp.dtos.auth;
 
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;

@@ -1,17 +1,16 @@
 package dev.sarakutleshi.recipeapp.models;
+import dev.sarakutleshi.recipeapp.security.AppUserDetails;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity(name = "users")
 public class User {
     @Id
@@ -35,6 +34,10 @@ public class User {
 
     @Column(nullable = false)
     private LocalDate birthdate;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 50)
+    private Role role;
 
 //    @OneToMany(mappedBy = "user")
 //    private List<Recipe> recipes;
