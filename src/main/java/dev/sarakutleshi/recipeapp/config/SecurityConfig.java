@@ -17,7 +17,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import static dev.sarakutleshi.recipeapp.models.Role.USER;
+import static dev.sarakutleshi.recipeapp.models.Permission.*;
+import static dev.sarakutleshi.recipeapp.models.Role.ADMIN;
+import static dev.sarakutleshi.recipeapp.models.Role.MANAGER;
 
 @Configuration
 @EnableWebSecurity
@@ -38,14 +40,25 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.GET, "/api/v1/recipes/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v1/auth/log-in").permitAll()
+                        .requestMatchers("/api/v1/view-recipe/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v1/auth/sign-up").permitAll()
+                        .requestMatchers("/api/v1/management/**").hasAnyRole(ADMIN.name(), MANAGER.name())
+                        .requestMatchers(HttpMethod.GET, "/api/v1/management/**")
+                        .hasAnyAuthority(ADMIN_READ.name(), MANAGER_READ.name())
+                        .requestMatchers(HttpMethod.POST, "/api/v1/management/**")
+                        .hasAnyAuthority(ADMIN_WRITE.name(), MANAGER_WRITE.name())
+                        .requestMatchers(HttpMethod.PUT, "/api/v1/management/**")
+                        .hasAnyAuthority(ADMIN_WRITE.name(), MANAGER_WRITE.name())
+                        .requestMatchers(HttpMethod.DELETE, "/api/v1/management/**")
+                        .hasAnyAuthority(ADMIN_WRITE.name(), MANAGER_WRITE.name())
                         .anyRequest().authenticated()
+
                 )
                 .csrf(csrf -> csrf.disable())
+                .cors(cors -> {
+                })
                 .sessionManagement(session ->
-                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                );
-
+                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         return http.build();
     }
 
