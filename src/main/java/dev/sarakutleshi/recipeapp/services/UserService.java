@@ -1,12 +1,15 @@
 package dev.sarakutleshi.recipeapp.services;
 
-import org.springframework.stereotype.Service;
-
-import dev.sarakutleshi.recipeapp.dtos.recipes.RegisterUserRequestDto;
+import dev.sarakutleshi.recipeapp.dtos.user.CreateUserRequestDto;
+import dev.sarakutleshi.recipeapp.dtos.user.UpdateUserRequestDto;
 import dev.sarakutleshi.recipeapp.dtos.user.UserDto;
+import dev.sarakutleshi.recipeapp.dtos.user.UserListingDto;
+import dev.sarakutleshi.recipeapp.services.baseServices.*;
 
-@Service
-public interface UserService {
-    UserDto login(String email, String password);
-    boolean register(RegisterUserRequestDto registerUserRequestDto);
+public interface UserService extends
+        FindAll<UserListingDto>,
+        FindById<UserDto, Long>,
+        Addable<CreateUserRequestDto>,
+        Modifiable<UpdateUserRequestDto, Long>,
+        Removable<Long> {
 }

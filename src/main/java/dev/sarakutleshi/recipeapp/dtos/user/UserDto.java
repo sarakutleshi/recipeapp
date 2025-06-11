@@ -1,10 +1,13 @@
 package dev.sarakutleshi.recipeapp.dtos.user;
 
-import dev.sarakutleshi.recipeapp.models.User;
+import jakarta.annotation.Nullable;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -13,25 +16,15 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class UserDto {
     @PositiveOrZero(message = "User ID must be positive or zero")
+    @NotBlank
     private long id;
+    @NotBlank
     private String username;
+    @NotBlank
     private String email;
+    @NotBlank
     private String name;
+    @NotBlank
     private String surname;
-    private LocalDate birthdate;
-
-    public UserDto(User user) {
-        this.id = user.getId();
-        this.username = user.getUsername();
-        this.email = user.getEmail();
-        this.name = user.getName();
-        this.surname = user.getSurname();
-        this.birthdate = user.getBirthdate();
-    }
-
-    public String getUser() {
-        return name + " " + surname;
-    }
-
 }
 

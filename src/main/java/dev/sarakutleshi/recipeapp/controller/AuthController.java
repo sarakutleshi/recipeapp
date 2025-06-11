@@ -2,41 +2,25 @@ package dev.sarakutleshi.recipeapp.controller;
 
 import dev.sarakutleshi.recipeapp.dtos.auth.AuthResponse;
 import dev.sarakutleshi.recipeapp.dtos.auth.LoginRequestDto;
-import dev.sarakutleshi.recipeapp.dtos.recipes.RegisterUserRequestDto;
-import dev.sarakutleshi.recipeapp.dtos.user.UserDto;
-import dev.sarakutleshi.recipeapp.exceptions.EmailExistException;
-import dev.sarakutleshi.recipeapp.exceptions.UsernameExistException;
+import dev.sarakutleshi.recipeapp.dtos.user.CreateUserRequestDto;
 import dev.sarakutleshi.recipeapp.services.AuthenticationService;
 import dev.sarakutleshi.recipeapp.services.UserService;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
-
-@Controller
+@RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
-
 public class AuthController {
     private final AuthenticationService service;
     private final UserService userService;
-
-    @GetMapping("/log-in")
-    public String login(Model model) {
-        model.addAttribute("loginRequestDto", new LoginRequestDto());
-        return "auth/login";
-    }
 
     @PostMapping("/log-in")
     public ResponseEntity<AuthResponse> login(@RequestBody LoginRequestDto request) {
@@ -47,37 +31,14 @@ public class AuthController {
     }
 
     @PostMapping("/sign-up")
-    public ResponseEntity<Map<String, String>> signUp(@RequestBody UserDto user) {
-        Map<String, String> response = new HashMap<>();
-        response.put("message", "User registered successfully.");
-        return ResponseEntity.ok(response);
-    }
-
-
-    @GetMapping("/sign-up")
-    public String register(Model model) {
-        model.addAttribute("registerUserRequestDto", new RegisterUserRequestDto());
-        return "auth/signup";
-    }
-
-
-    @PostMapping("/logout")
-    public String logout(HttpServletRequest request, HttpServletResponse response) {
-        Cookie cookie = new Cookie("id", "");
-        cookie.setMaxAge(0);
-        response.addCookie(cookie);
-
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            session.invalidate();
-            System.out.println("Session invalidated successfully.");
+    public ResponseEntity<CreateUserRequestDto> register(@Valid @RequestBody CreateUserRequestDto createUserRequestDto
+            , BindingResult result) {
+        if (result.hasErrors()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(createUserRequestDto);
         } else {
-            System.out.println("No active session found.");
+            CreateUserRequestDto createdUser = userService.add(createUserRequestDto);
+            return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
         }
-        return "redirect:/guest-home";
     }
-
-
-
 
 }

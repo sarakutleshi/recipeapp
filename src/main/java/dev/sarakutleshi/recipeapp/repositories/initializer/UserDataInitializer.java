@@ -29,7 +29,6 @@ public class UserDataInitializer implements Runnable {
             user1.setSurname("Kutleshi");
             user1.setEmail("sara.kutleshi@gmail.com");
             user1.setUsername("sarakutleshi");
-            user1.setBirthdate(LocalDate.of(2000, 1, 1));
             user1.setPassword("Admin123"); //password.encode("123123123")
             userRepository.save(user1);
         }

@@ -10,6 +10,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
@@ -24,11 +27,26 @@ import java.util.Map;
 public class AuthenticationServiceImpl implements AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final UserDetailsService userDetailsService;
-
+    private final Long expireTimeInMs = 86400000L; // expire time in milliseconds = 24 hours
     @Value("${jwt.secret}") // merre vleren prej applicaiton.properties
     private String secretKey;
 
-    private final Long expireTimeInMs = 86400000L; // expire time in milliseconds = 24 hours
+    public static Authentication getAuthentication() {
+        return SecurityContextHolder.getContext().getAuthentication();
+    }
+
+    public static String getLoggedInUserEmail() {
+        Authentication authentication = getAuthentication();
+        return authentication.getName();
+    }
+
+    public static String getLoggedInUserRole() {
+        Authentication authentication = getAuthentication();
+        return authentication.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .findFirst()
+                .orElse(null);
+    }
 
     @Override
     public UserDetails authenticate(String email, String password) {
