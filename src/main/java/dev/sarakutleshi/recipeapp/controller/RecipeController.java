@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
+@RequestMapping("/recipes")
 public class RecipeController {
 
     private final RecipeService recipeService;
@@ -46,29 +47,6 @@ public class RecipeController {
         return "recipes/new";
     }
 
-    @PostMapping("/new")
-    public String newRecipe(@Valid @ModelAttribute Recipe recipe, BindingResult bindingResult,
-                            RedirectAttributes redirectAttributes, @RequestParam("documentFile") MultipartFile documentFile,
-                            HttpServletRequest request) {
-
-        if (bindingResult.hasErrors()) {
-            bindingResult.getAllErrors().forEach(System.out::println);
-            return "recipes/new";
-        }
-
-
-        HttpSession session = request.getSession(false);
-        if (session == null) {
-            redirectAttributes.addFlashAttribute("error", "Session expired, please log in again.");
-            return "redirect:/login";
-        }
-
-        UserDto userDto = (UserDto) session.getAttribute("user");
-        recipeService.add(recipe);
-        redirectAttributes.addAttribute("errorId", "SUCCESS");
-        redirectAttributes.addFlashAttribute("success", "User Successfully registered!");
-        return "redirect:/index";
-    }
 
     @GetMapping("/{id}/edit")
     public String editRecipe(Model model, @PathVariable Long id) {

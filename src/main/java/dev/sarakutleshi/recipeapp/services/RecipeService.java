@@ -23,12 +23,12 @@ public class RecipeService {
         return recipeRepository.findById(id).orElse(null);
     }
 
-    public Recipe add(Recipe customer) {
-        var existCustomer = findById(customer.getId());
-        if (existCustomer != null) {
+    public Recipe add(Recipe recipe) {
+        var existRecipe = findById(recipe.getId());
+        if (existRecipe != null) {
             return null;
         }
-        return recipeRepository.save(customer);
+        return recipeRepository.save(recipe);
     }
 
     public Recipe modify(long id, Recipe customer) {

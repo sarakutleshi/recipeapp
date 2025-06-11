@@ -2,13 +2,18 @@ package dev.sarakutleshi.recipeapp.controller.api.v1;
 
 import dev.sarakutleshi.recipeapp.models.Recipe;
 import dev.sarakutleshi.recipeapp.services.RecipeService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/recipes")
@@ -16,26 +21,23 @@ import java.util.List;
 public class RecipeRestController {
     private final RecipeService service;
 
-    // ✅ Fetch all recipes
+
     @GetMapping
     public List<Recipe> findAll() {
         return service.findAll();
     }
 
-    // ✅ Fetch a single recipe by ID
     @GetMapping("/{id}")
     public Recipe findById(@PathVariable long id) {
         return service.findById(id);
     }
 
-    // ✅ Add a new recipe
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Recipe add(@Valid @RequestBody Recipe model) {
         return service.add(model);
     }
 
-    // ✅ Update a recipe
     @PutMapping("/{id}")
     public Recipe modify(@PathVariable long id, @Valid @RequestBody Recipe model) {
         if (id != model.getId()) {
@@ -44,26 +46,47 @@ public class RecipeRestController {
         return service.modify(id, model);
     }
 
-    // ✅ Delete a recipe (fixed path)
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable long id) {
         service.removeById(id);
     }
 
-    // ✅ Fetch recipe details (same as findById, so this is redundant)
     @GetMapping("/{id}/detail")
     public Recipe details(@PathVariable long id) {
         return service.findById(id);
     }
 
-    // ✅ Return an empty Recipe model for default post
+
     @GetMapping("/default")
     public Recipe defaultPost() {
         return new Recipe();
     }
 
-    // ✅ Corrected search functionality (Use @RequestParam instead of @PathVariable)
+    @PostMapping("/new")
+    @ResponseBody
+    public ResponseEntity<?> newRecipeJson(
+            @Valid @ModelAttribute Recipe recipe,
+            BindingResult bindingResult,
+            @RequestParam("documentFile") MultipartFile documentFile,
+            HttpServletRequest request) {
+
+        if (bindingResult.hasErrors()) {
+            return ResponseEntity.badRequest().body(bindingResult.getAllErrors());
+        }
+
+        service.add(recipe);
+
+        return ResponseEntity.ok(Map.of("message", "Recipe submitted successfully"));
+    }
+
+    @GetMapping("/details/{id}")
+    public String details(Model model, @PathVariable Long id) {
+        var recipe = service.findById(id);
+        model.addAttribute("recipe", recipe);
+        return "recipes/detail";
+    }
+
     @GetMapping("/search")
     public List<Recipe> searchByName(@RequestParam("name") String name) {
         return service.searchByName(name);
